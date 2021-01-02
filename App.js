@@ -1,13 +1,51 @@
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, ScrollView, View, TextInput, Image, Button } from 'react-native';
+
+import QuestionButton from './components/questions-button';
+
+const Stack = createStackNavigator();
+
+const HomeScreen = ({ navigation }) => {
+  return (
+    <View style={styles.container}>
+      <Button
+        color = "gray"
+        style={styles.button}
+        title="Go to Question"
+        onPress={() =>
+          navigation.navigate('QuestionButton')
+        }
+      />
+      <StatusBar style="auto" />
+    </View>
+
+  )
+}
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+    <Stack.Navigator>
+
+    <Stack.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{ title: "questions answered" }}
+      />
+    
+    <Stack.Screen
+          name="QuestionButton"
+          component = {QuestionButton}
+          options = {{ title: "QuestionButton" }}
+          />
+
+    </Stack.Navigator>
+  </NavigationContainer>
   );
 }
 
