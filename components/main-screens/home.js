@@ -4,6 +4,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { StatusBar } from "expo-status-bar";
 import React, { useEffect } from "react";
 import {
+  TouchableOpacity,
   StyleSheet,
   Text,
   ScrollView,
@@ -36,22 +37,26 @@ const Home = ({ navigation }) => {
       {questionsArray.map((item, index) => {
         let question = item.question;
         return (
-        <Button 
-          key = {index}
-          color="gray" 
-          title={question} 
-          onPress={() => navigation.dispatch(
-            CommonActions.navigate({
-              name: question,
-              params: {
-                key: index
+          <TouchableOpacity key={index}>
+            <Text
+              style={styles.questions}
+              key={index}
+              onPress={() =>
+                navigation.dispatch(
+                  CommonActions.navigate({
+                    name: question,
+                    params: {
+                      key: index
+                    }
+                  })
+                )
               }
-            })
-          )}
-
-          />)
-        })
-      }
+            >
+              {question}
+            </Text>
+          </TouchableOpacity>
+        );
+      })}
     </View>
   );
 };
@@ -62,5 +67,21 @@ const Home = ({ navigation }) => {
 create component that will be dynamically created as the questions
 */
 
+const styles = StyleSheet.create({
+  questions: {
+    backgroundColor: "gray",
+    margin: 8,
+    borderColor: "white",
+    //borderWidth: 1,
+    borderRadius: 8,
+    color: "white",
+    width: "100%",
+    // fontSize: 24,
+    // fontWeight: 'bold',
+    overflow: "hidden",
+    padding: 12,
+    textAlign: "left"
+  }
+});
 
 export default HomeStackScreen;
