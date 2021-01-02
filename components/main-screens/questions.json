@@ -1,0 +1,32 @@
+{
+  "questions": [
+    {
+      "question":  "How did you sleep last night?",
+      "possible answer": "scale"
+    },
+    {
+      "question": "How do you feel today?",
+      "possible answer": "scale"
+    },
+    {
+      "question": "What did you do today?",
+      "possible answer": "tags"
+    },
+    {
+      "question": "Did you observe your boundaries?",
+      "possible answer": "single choice"
+    },
+    {
+      "question": "What did you do for your self care?",
+      "possible answer": "tags"
+    },
+    {
+      "question": "What will you do tomorrow?",
+      "possible answer": "open"
+    }
+  ],
+  "possible answers": 
+  [
+    "scale", "tags", "single choice", "open"
+  ]
+}

@@ -2,7 +2,7 @@ import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -14,6 +14,10 @@ import {
 } from "react-native";
 
 import QuestionButton from "../questions-button";
+
+const questionsArray = require('./questions.json');
+
+console.log(questionsArray);
 
 const HomeStack = createStackNavigator();
 
@@ -27,7 +31,7 @@ function HomeStackScreen() {
   );
 }
 
-const Home = ({ navigation }) => {
+const Home = ({ navigation }) => {  
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Button
