@@ -15,29 +15,34 @@ import {
 
 import QuestionButton from "../questions-button";
 
+const HomeStack = createStackNavigator();
 
+function HomeStackScreen() {
+  return (
+    <HomeStack.Navigator>
+      <HomeStack.Screen name="Home" component={Home} />
+      <HomeStack.Screen name="Question 1" component={QuestionButton} />
+      <HomeStack.Screen name="Question 2" component={QuestionButton} />
+    </HomeStack.Navigator>
+  );
+}
 
 const Home = ({ navigation }) => {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home</Text>
-      
-      {/* <Button
-        color="gray"
-        
-        title="Go to Question 1"
-        onPress={() => navigation.navigate("QuestionButton 1")}
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <Button
+        color = "gray"
+        title="Question 1"
+        onPress={() => navigation.navigate("Question 1")}
       />
 
       <Button
-        color="gray"
-       
-        title="Go to Question 2"
-        onPress={() => navigation.navigate("QuestionButton 2")}
+        color = "gray"
+        title="Question 2"
+        onPress={() => navigation.navigate("Question 2")}
       />
-      <StatusBar style="auto" /> */}
     </View>
   );
 };
 
-export default Home;
+export default HomeStackScreen;

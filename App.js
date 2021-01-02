@@ -15,7 +15,7 @@ import {
 } from "react-native";
 
 // main screens
-import Home from "./components/main-screens/home";
+import HomeStackScreen from "./components/main-screens/home";
 import Calendar from "./components/main-screens/calendar";
 import Stats from "./components/main-screens/stats";
 import Settings from "./components/main-screens/settings";
@@ -50,7 +50,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen name="Home" component={Home} options={{ tabBarBadge: 3 }} />
+      <Tab.Screen name="Home" component={HomeStackScreen} />
         <Tab.Screen name="Calendar" component={Calendar} />
         <Tab.Screen name="Stats" component={Stats} />
         <Tab.Screen name="Settings" component={Settings} />
