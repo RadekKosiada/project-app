@@ -3,15 +3,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  ScrollView,
-  View,
-  TextInput,
-  Image,
-  Button
-} from "react-native";
+import { StyleSheet, Text, ScrollView, View, TextInput, Image, Button } from "react-native";
 
 // main screens
 import Home from "./components/main-screens/home";
