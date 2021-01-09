@@ -28,5 +28,7 @@
   "possible answers": 
   [
     "scale", "tags", "single choice", "open"
-  ]
+  ],
+  "tags":
+  ["worked", "excercised", "walked", "visited friends"]
 }
