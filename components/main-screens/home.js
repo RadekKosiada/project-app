@@ -19,14 +19,15 @@ import {
 const questionsData = require("./questions.json");
 const questionsArray = questionsData.questions;
 
-//Screen 
-function QuestionScreen( { navigation } ) {
+//Screen
+function QuestionScreen({ route, navigation }) {
   return (
     <View>
-      <Text></Text>
-      <Button></Button>
+      <Text>{route.params.key + 1} / {route.params.allQuestionsSum} </Text>
+      <Text>{route.params.question}</Text>
+      <Text>{route.params.possibleAnswer}</Text>
     </View>
-  )
+  );
 }
 
 // Root
@@ -37,18 +38,16 @@ function HomeStackScreen() {
     <HomeStack.Navigator>
       <HomeStack.Screen name="Home" component={Home} />
 
-      { questionsArray.map((item, index) => {
+      {questionsArray.map((item, index) => {
         let question = item.question;
         return (
-          <HomeStack.Screen 
-
-            name={question} 
+          <HomeStack.Screen
+            name={question}
             key={index}
-            component={QuestionScreen}
-            />
-        )
+            component={QuestionScreen}         
+          />
+        );
       })}
-
     </HomeStack.Navigator>
   );
 }
@@ -69,7 +68,10 @@ const Home = ({ navigation }) => {
                   CommonActions.navigate({
                     name: question,
                     params: {
-                      key: index
+                      key: index,
+                      question: question,
+                      allQuestionsSum: questionsArray.length,
+                      possibleAnswer: item['possible answer']
                     }
                   })
                 )
