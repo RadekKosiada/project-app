@@ -19,12 +19,36 @@ import {
 const questionsData = require("./questions.json");
 const questionsArray = questionsData.questions;
 
+//Screen 
+function QuestionScreen( { navigation } ) {
+  return (
+    <View>
+      <Text></Text>
+      <Button></Button>
+    </View>
+  )
+}
+
+// Root
 const HomeStack = createStackNavigator();
 
 function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen name="Home" component={Home} />
+
+      { questionsArray.map((item, index) => {
+        let question = item.question;
+        return (
+          <HomeStack.Screen 
+
+            name={question} 
+            key={index}
+            component={QuestionScreen}
+            />
+        )
+      })}
+
     </HomeStack.Navigator>
   );
 }
@@ -34,6 +58,7 @@ const Home = ({ navigation }) => {
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       {questionsArray.map((item, index) => {
         let question = item.question;
+        console.log(item);
         return (
           <TouchableOpacity key={index}>
             <Text
