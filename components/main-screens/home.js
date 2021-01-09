@@ -23,13 +23,17 @@ const questionsArray = questionsData.questions;
 
 function SliderComponent() {
   return (
-    <Slider
-      style={{ width: 200, height: 40 }}
-      minimumValue={1}
-      maximumValue={5}
-      // minimumTrackTintColor="#FFFFFF"
-      // maximumTrackTintColor="#000000"
-    />
+     // https://github.com/callstack/react-native-slider
+    <View style={{ flex: 1, alignItems: "stretch", justifyContent: "center" }}>
+      <Slider
+        value={2}
+        style={{ width: 200, height: 40 }}
+        minimumValue={1}
+        maximumValue={5}
+        // minimumTrackTintColor="#FFFFFF"
+        // maximumTrackTintColor="#000000"
+      />
+    </View>
   );
 }
 
@@ -37,48 +41,53 @@ function TagsComponent() {
   const tagsArray = questionsData.tags;
   console.log(tagsArray);
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Hallo</Text>
+    <View style={{ flex: 1, alignItems: "stretch", justifyContent: "center" }}>
       {tagsArray.map((tag, index) => {
         console.log(index, tag);
         return (
-          <Button 
-          // style={styles.tags}
-          style = {{
-            backgroundColor: "gray",
-            margin: 8,
-            borderColor: "white",
-            //borderWidth: 1,
-            borderRadius: 8,
-            color: "white",
-            width: "100%",
-            // fontSize: 24,
-            // fontWeight: 'bold',
-            overflow: "hidden",
-            padding: 12,
-            textAlign: "center"
-          }}
-          key={index} 
-          title={tag} 
+          <Button
+            // style={styles.tags}
+            style={{
+              backgroundColor: "gray",
+              margin: 8,
+              borderColor: "white",
+              //borderWidth: 1,
+              borderRadius: 8,
+              color: "white",
+              width: "100%",
+              // fontSize: 24,
+              // fontWeight: 'bold',
+              overflow: "hidden",
+              padding: 12,
+              textAlign: "center"
+            }}
+            key={index}
+            title={tag}
           />
-        )
-        
+        );
       })}
     </View>
   );
 }
 
 function OpenAnswerComponent() {
-  console.log(styles.possibleAnswer)
+  console.log(styles.possibleAnswer);
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <TextInput 
-      //style={styles.possibleAnswer} 
-      style ={{color: 'white', backgroundColor: 'white', borderColor: 'black', width: 120, height: 250, borderWidth: 1,  borderRadius: 8
-     }}
+      <TextInput
+        //style={styles.possibleAnswer}
+        style={{
+          color: "white",
+          backgroundColor: "white",
+          borderColor: "black",
+          width: 120,
+          height: 250,
+          borderWidth: 1,
+          borderRadius: 8
+        }}
       />
     </View>
-  )
+  );
 }
 
 //Screen
