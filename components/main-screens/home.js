@@ -14,18 +14,35 @@ import {
   Button
 } from "react-native";
 
+import Slider from "@react-native-community/slider";
+
 // import QuestionButton from "../questions-button";
 
 const questionsData = require("./questions.json");
 const questionsArray = questionsData.questions;
 
+function SliderComponent() {
+  return (
+    <Slider
+      style={{ width: 200, height: 40 }}
+      minimumValue={1}
+      maximumValue={5}
+      // minimumTrackTintColor="#FFFFFF"
+      // maximumTrackTintColor="#000000"
+    />
+  );
+}
+
 //Screen
 function QuestionScreen({ route, navigation }) {
   return (
-    <View>
-      <Text>{route.params.key + 1} / {route.params.allQuestionsSum} </Text>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>
+        {route.params.key + 1} / {route.params.allQuestionsSum}{" "}
+      </Text>
       <Text>{route.params.question}</Text>
       <Text>{route.params.possibleAnswer}</Text>
+      {route.params.possibleAnswer=== 'scale' ? <SliderComponent /> : null }
     </View>
   );
 }
@@ -44,7 +61,7 @@ function HomeStackScreen() {
           <HomeStack.Screen
             name={question}
             key={index}
-            component={QuestionScreen}         
+            component={QuestionScreen}
           />
         );
       })}
@@ -71,7 +88,7 @@ const Home = ({ navigation }) => {
                       key: index,
                       question: question,
                       allQuestionsSum: questionsArray.length,
-                      possibleAnswer: item['possible answer']
+                      possibleAnswer: item["possible answer"]
                     }
                   })
                 )
