@@ -2,7 +2,7 @@ import "react-native-gesture-handler";
 import { NavigationContainer, CommonActions } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StatusBar } from "expo-status-bar";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   TouchableOpacity,
   StyleSheet,
@@ -22,11 +22,21 @@ const questionsData = require("./questions.json");
 const questionsArray = questionsData.questions;
 
 function SliderComponent() {
+  const [sliderValue, setSliderValue] = useState(0);
+
+  //https://reactnativeforyou.com/how-to-add-a-slider-component-in-react-native/
+  const handleChange = sliderValue => {
+    setSliderValue(sliderValue)
+  };
+
   return (
-     // https://github.com/callstack/react-native-slider
-    <View style={{ flex: 1, alignItems: "stretch", justifyContent: "center" }}>
+    // https://github.com/callstack/react-native-slider
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <Text>{Math.round(sliderValue)}</Text>
       <Slider
-        value={2}
+        type="range"
+        value={sliderValue}
+        onValueChange={handleChange}
         style={{ width: 200, height: 40 }}
         minimumValue={1}
         maximumValue={5}
