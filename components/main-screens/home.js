@@ -33,16 +33,66 @@ function SliderComponent() {
   );
 }
 
+function TagsComponent() {
+  const tagsArray = questionsData.tags;
+  console.log(tagsArray);
+  return (
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <Text>Hallo</Text>
+      {tagsArray.map((tag, index) => {
+        console.log(index, tag);
+        return (
+          <Button 
+          // style={styles.tags}
+          style = {{
+            backgroundColor: "gray",
+            margin: 8,
+            borderColor: "white",
+            //borderWidth: 1,
+            borderRadius: 8,
+            color: "white",
+            width: "100%",
+            // fontSize: 24,
+            // fontWeight: 'bold',
+            overflow: "hidden",
+            padding: 12,
+            textAlign: "center"
+          }}
+          key={index} 
+          title={tag} 
+          />
+        )
+        
+      })}
+    </View>
+  );
+}
+
+function OpenAnswerComponent() {
+  console.log(styles.possibleAnswer)
+  return (
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <TextInput 
+      //style={styles.possibleAnswer} 
+      style ={{color: 'white', backgroundColor: 'white', borderColor: 'black', width: 120, height: 250, borderWidth: 1,  borderRadius: 8
+     }}
+      />
+    </View>
+  )
+}
+
 //Screen
 function QuestionScreen({ route, navigation }) {
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>
         {route.params.key + 1} / {route.params.allQuestionsSum}{" "}
       </Text>
       <Text>{route.params.question}</Text>
-      <Text>{route.params.possibleAnswer}</Text>
-      {route.params.possibleAnswer=== 'scale' ? <SliderComponent /> : null }
+      {/* <Text>{route.params.possibleAnswer}</Text> */}
+      {route.params.possibleAnswer === "scale" ? <SliderComponent /> : null}
+      {route.params.possibleAnswer === "tags" ? <TagsComponent /> : null}
+      {route.params.possibleAnswer === "open" ? <OpenAnswerComponent /> : null}
     </View>
   );
 }
@@ -123,6 +173,35 @@ const styles = StyleSheet.create({
     overflow: "hidden",
     padding: 12,
     textAlign: "left"
+  },
+  tags: {
+    backgroundColor: "gray",
+    margin: 8,
+    borderColor: "white",
+    //borderWidth: 1,
+    borderRadius: 8,
+    color: "white",
+    width: "100%",
+    // fontSize: 24,
+    // fontWeight: 'bold',
+    overflow: "hidden",
+    padding: 12,
+    textAlign: "center"
+  },
+  openAnswer: {
+    backgroundColor: "white",
+    // margin: 8,
+    borderColor: "gray",
+    //borderWidth: 1,
+    borderRadius: 8,
+    color: "white",
+    height: "100%",
+    width: "100%",
+    // fontSize: 24,
+    // fontWeight: 'bold',
+    overflow: "hidden",
+    padding: 12,
+    textAlign: "center"
   }
 });
 
