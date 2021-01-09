@@ -14,7 +14,7 @@ import {
   Button
 } from "react-native";
 
-import QuestionButton from "../questions-button";
+// import QuestionButton from "../questions-button";
 
 const questionsData = require("./questions.json");
 const questionsArray = questionsData.questions;
@@ -25,8 +25,6 @@ function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen name="Home" component={Home} />
-      <HomeStack.Screen name="Question 1" component={QuestionButton} />
-      <HomeStack.Screen name="Question 2" component={QuestionButton} />
     </HomeStack.Navigator>
   );
 }
