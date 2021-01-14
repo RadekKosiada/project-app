@@ -47,12 +47,12 @@ function SliderComponent() {
   );
 }
 
-function TagsComponent() {
-  const tagsArray = questionsData.tags;
-  console.log(tagsArray);
+function TagsComponent(props) {
+  const answersArray = props.answers;
+  console.log(props);
   return (
     <View style={{ flex: 1, alignItems: "stretch", justifyContent: "center" }}>
-      {tagsArray.map((tag, index) => {
+      {answersArray.map((tag, index) => {
         console.log(index, tag);
         return (
           <Button
@@ -100,15 +100,11 @@ function OpenAnswerComponent() {
   );
 }
 
-function SingleAnswerComponent() {
-  console.log();
-  return (
-    <View></View>
-  )
-}
-
 //Screen
 function QuestionScreen({ route, navigation }) {
+  const tagsArray = questionsData.tags;
+  const singleAnswerArray = questionsData["single choice answers"];
+  // console.log(singleAnswerArray);
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>
@@ -117,9 +113,9 @@ function QuestionScreen({ route, navigation }) {
       <Text>{route.params.question}</Text>
       {/* <Text>{route.params.possibleAnswer}</Text> */}
       {route.params.possibleAnswer === "scale" ? <SliderComponent /> : null}
-      {route.params.possibleAnswer === "tags" ? <TagsComponent /> : null}
+      {route.params.possibleAnswer === "tags" ? <TagsComponent answers = {tagsArray} /> : null}
       {route.params.possibleAnswer === "open" ? <OpenAnswerComponent /> : null}
-      {route.params.possibleAnswer === "single choice" ? <SingleAnswerComponent /> : null}
+      {route.params.possibleAnswer === "single choice" ? <TagsComponent answers = {singleAnswerArray} /> : null}
     </View>
   );
 }
