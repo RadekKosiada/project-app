@@ -193,11 +193,6 @@ const Home = ({ navigation }) => {
   );
 };
 
-// TODO The action 'NAVIGATE' with payload {"name":"How did you sleep last night?","params":{"key":0}} was not handled by any navigator.
-// Do you have a screen named 'How did you sleep last night?'?
-/* 
-create component that will be dynamically created as the questions
-*/
 
 const styles = StyleSheet.create({
   questions: {
