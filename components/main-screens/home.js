@@ -57,6 +57,11 @@ function TagsComponent(props) {
   const answersArray = props.answers;
   const addLoopButton = props.indefiniteAnswers;
 
+  // TODO should it be the same input as for the open question?
+  const openInputScreen = () => {
+    console.log('input screen opened');
+  }
+
   console.log(addLoopButton);
   return (
     <View style={{ flex: 1, alignItems: "stretch", justifyContent: "center" }}>
@@ -86,7 +91,13 @@ function TagsComponent(props) {
       })}
       {/* button to add more tags */}
       {addLoopButton ? (
-        <FontAwesome.Button name="search" backgroundColor="gray" size={15} color="black" />
+        <FontAwesome.Button 
+          name="search" 
+          backgroundColor="gray" 
+          size={15} 
+          color="black" 
+          onPress={openInputScreen}
+          />
            
       ) : null}
     </View>
