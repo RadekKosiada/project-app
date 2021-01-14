@@ -16,6 +16,10 @@ import {
 // https://reactnativeelements.com/docs/button
 // import { Icon } from 'react-native-elements'
 
+// https://icons.expo.fyi/FontAwesome/search
+// https://icons.expo.fyi/
+import { FontAwesome } from '@expo/vector-icons'; 
+
 import Slider from "@react-native-community/slider";
 
 // import QuestionButton from "../questions-button";
@@ -82,12 +86,8 @@ function TagsComponent(props) {
       })}
       {/* button to add more tags */}
       {addLoopButton ? (
-        <Icon
-          reverse
-          name="ios-american-football"
-          type="ionicon"
-          color="#517fa4"
-        />
+        <FontAwesome.Button name="search" backgroundColor="gray" size={15} color="black" />
+           
       ) : null}
     </View>
   );
