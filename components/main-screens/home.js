@@ -100,6 +100,13 @@ function OpenAnswerComponent() {
   );
 }
 
+function SingleAnswerComponent() {
+  console.log();
+  return (
+    <View></View>
+  )
+}
+
 //Screen
 function QuestionScreen({ route, navigation }) {
   return (
@@ -112,6 +119,7 @@ function QuestionScreen({ route, navigation }) {
       {route.params.possibleAnswer === "scale" ? <SliderComponent /> : null}
       {route.params.possibleAnswer === "tags" ? <TagsComponent /> : null}
       {route.params.possibleAnswer === "open" ? <OpenAnswerComponent /> : null}
+      {route.params.possibleAnswer === "single choice" ? <SingleAnswerComponent /> : null}
     </View>
   );
 }
