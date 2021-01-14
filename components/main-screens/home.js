@@ -11,8 +11,10 @@ import {
   View,
   TextInput,
   Image,
-  Button
+  Button,
 } from "react-native";
+// https://reactnativeelements.com/docs/button
+// import { Icon } from 'react-native-elements'
 
 import Slider from "@react-native-community/slider";
 
@@ -26,7 +28,7 @@ function SliderComponent() {
 
   //https://reactnativeforyou.com/how-to-add-a-slider-component-in-react-native/
   const handleChange = sliderValue => {
-    setSliderValue(sliderValue)
+    setSliderValue(sliderValue);
   };
 
   return (
@@ -49,7 +51,9 @@ function SliderComponent() {
 
 function TagsComponent(props) {
   const answersArray = props.answers;
-  console.log(props);
+  const addLoopButton = props.indefiniteAnswers;
+
+  console.log(addLoopButton);
   return (
     <View style={{ flex: 1, alignItems: "stretch", justifyContent: "center" }}>
       {answersArray.map((tag, index) => {
@@ -76,6 +80,15 @@ function TagsComponent(props) {
           />
         );
       })}
+      {/* button to add more tags */}
+      {addLoopButton ? (
+        <Icon
+          reverse
+          name="ios-american-football"
+          type="ionicon"
+          color="#517fa4"
+        />
+      ) : null}
     </View>
   );
 }
@@ -113,9 +126,13 @@ function QuestionScreen({ route, navigation }) {
       <Text>{route.params.question}</Text>
       {/* <Text>{route.params.possibleAnswer}</Text> */}
       {route.params.possibleAnswer === "scale" ? <SliderComponent /> : null}
-      {route.params.possibleAnswer === "tags" ? <TagsComponent answers = {tagsArray} /> : null}
+      {route.params.possibleAnswer === "tags" ? (
+        <TagsComponent answers={tagsArray} indefiniteAnswers={true} />
+      ) : null}
       {route.params.possibleAnswer === "open" ? <OpenAnswerComponent /> : null}
-      {route.params.possibleAnswer === "single choice" ? <TagsComponent answers = {singleAnswerArray} /> : null}
+      {route.params.possibleAnswer === "single choice" ? (
+        <TagsComponent answers={singleAnswerArray} indefiniteAnswers={false} />
+      ) : null}
     </View>
   );
 }
