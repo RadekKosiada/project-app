@@ -30,5 +30,6 @@
     "scale", "tags", "single choice", "open"
   ],
   "tags":
-  ["worked", "excercised", "walked", "visited friends"]
+  ["worked", "excercised", "walked", "visited friends"],
+  "single choice answers": ["yes", "no", "sort of"]
 }
