@@ -1,5 +1,5 @@
 import "react-native-gesture-handler";
-import { NavigationContainer, CommonActions } from "@react-navigation/native";
+import { NavigationContainer, CommonActions, useNavigation } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
@@ -11,14 +11,15 @@ import {
   View,
   TextInput,
   Image,
-  Button,
+  Button
 } from "react-native";
 // https://reactnativeelements.com/docs/button
 // import { Icon } from 'react-native-elements'
 
 // https://icons.expo.fyi/FontAwesome/search
 // https://icons.expo.fyi/
-import { FontAwesome } from '@expo/vector-icons'; 
+// https://www.youtube.com/watch?v=C4ikFaP0a5o
+import { FontAwesome } from "@expo/vector-icons";
 
 import Slider from "@react-native-community/slider";
 
@@ -26,6 +27,27 @@ import Slider from "@react-native-community/slider";
 
 const questionsData = require("./questions.json");
 const questionsArray = questionsData.questions;
+
+//  go to button
+//https://reactnavigation.org/docs/connecting-navigation-prop/
+function GoToButton({ screenName }) {
+  const navigation = useNavigation();
+
+  return (
+    <FontAwesome.Button
+      name="search"
+      backgroundColor="gray"
+      size={15}
+      color="black"
+      title={`Go to ${screenName}`}
+      onPress={() => navigation.navigate(screenName)}
+    />
+  );
+}
+
+// TODO adjust the Input screen? and pass possible answers as autocomplete, but only if Loop is pressed; 
+// divide into simple files;
+// check if I  an use Open Answer Component as screen but so it looks like question screen
 
 function SliderComponent() {
   const [sliderValue, setSliderValue] = useState(0);
@@ -57,10 +79,6 @@ function TagsComponent(props) {
   const answersArray = props.answers;
   const addLoopButton = props.indefiniteAnswers;
 
-  // TODO should it be the same input as for the open question?
-  const openInputScreen = () => {
-    console.log('input screen opened');
-  }
 
   console.log(addLoopButton);
   return (
@@ -90,16 +108,7 @@ function TagsComponent(props) {
         );
       })}
       {/* button to add more tags */}
-      {addLoopButton ? (
-        <FontAwesome.Button 
-          name="search" 
-          backgroundColor="gray" 
-          size={15} 
-          color="black" 
-          onPress={openInputScreen}
-          />
-           
-      ) : null}
+      {addLoopButton ? <GoToButton screenName="Input" /> : null}
     </View>
   );
 }
@@ -166,6 +175,7 @@ function HomeStackScreen() {
           />
         );
       })}
+      <HomeStack.Screen name={"Input"} component={OpenAnswerComponent} />
     </HomeStack.Navigator>
   );
 }
