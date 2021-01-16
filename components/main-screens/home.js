@@ -30,9 +30,8 @@ const questionsArray = questionsData.questions;
 
 //  go to button
 //https://reactnavigation.org/docs/connecting-navigation-prop/
-function GoToButton({ screenName }) {
+function GoToButton({ screenName, data }) {
   const navigation = useNavigation();
-
   return (
     <FontAwesome.Button
       name="search"
@@ -40,7 +39,7 @@ function GoToButton({ screenName }) {
       size={15}
       color="black"
       title={`Go to ${screenName}`}
-      onPress={() => navigation.navigate(screenName)}
+      onPress={() => navigation.navigate(screenName, data)}
     />
   );
 }
@@ -75,12 +74,35 @@ function SliderComponent() {
   );
 }
 
+function AddTagComponent({route}) {
+  console.log(route);
+  const question = route.params;
+  return (
+    <View style={{ flex: 1, alignItems: "left", justifyContent: "flex-start" }}>
+      <Text>{question}</Text>
+      <TextInput
+        placeholder = {"Add a new tag..."}
+        style={{
+          // color: "white",
+          // backgroundColor: "white",
+          borderColor: "black",
+          width: 300,
+          height: 50,
+          borderWidth: 1,
+          borderRadius: 8
+        }}
+      />
+    </View>
+  );
+}
+
 function TagsComponent(props) {
   const answersArray = props.answers;
   const addLoopButton = props.indefiniteAnswers;
+  const question = props.question;
 
 
-  console.log(addLoopButton);
+  console.log(question);
   return (
     <View style={{ flex: 1, alignItems: "stretch", justifyContent: "center" }}>
       {answersArray.map((tag, index) => {
@@ -108,7 +130,7 @@ function TagsComponent(props) {
         );
       })}
       {/* button to add more tags */}
-      {addLoopButton ? <GoToButton screenName="Input" /> : null}
+      {addLoopButton ? <GoToButton screenName="Input" data={question} /> : null}
     </View>
   );
 }
@@ -147,7 +169,7 @@ function QuestionScreen({ route, navigation }) {
       {/* <Text>{route.params.possibleAnswer}</Text> */}
       {route.params.possibleAnswer === "scale" ? <SliderComponent /> : null}
       {route.params.possibleAnswer === "tags" ? (
-        <TagsComponent answers={tagsArray} indefiniteAnswers={true} />
+        <TagsComponent answers={tagsArray} indefiniteAnswers={true} question = {route.params.question}/>
       ) : null}
       {route.params.possibleAnswer === "open" ? <OpenAnswerComponent /> : null}
       {route.params.possibleAnswer === "single choice" ? (
@@ -175,7 +197,7 @@ function HomeStackScreen() {
           />
         );
       })}
-      <HomeStack.Screen name={"Input"} component={OpenAnswerComponent} />
+      <HomeStack.Screen name={"Input"} component={AddTagComponent} />
     </HomeStack.Navigator>
   );
 }
