@@ -16,12 +16,8 @@ import {
 // https://reactnativeelements.com/docs/button
 // import { Icon } from 'react-native-elements'
 
-// Components
-import SliderComponent from "./slider";
-import OpenAnswerComponent from "./openAnswerComponent";
-import TagsComponent from "./tagsComponent";
-
 //Screens 
+import QuestionScreen from "./questionScreen";
 import AddTagScreen from "./addTagScreen";
 
 // Data
@@ -32,36 +28,6 @@ const questionsArray = questionsData.questions;
 // TODO adjust the Input screen? and pass possible answers as autocomplete, but only if Loop is pressed; 
 // divide into simple files;
 // check if I  an use Open Answer Component as screen but so it looks like question screen
-
-//Screen
-function QuestionScreen({ route, navigation }) {
-  const tagsArray = route.params.tagsArray;
-  const singleAnswerArray = route.params.singleAnswerArray;
-
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>
-        {route.params.key + 1} / {route.params.allQuestionsSum}{" "}
-      </Text>
-      <Text>{route.params.question}</Text>
-      {/* <Text>{route.params.possibleAnswer}</Text> */}
-      {route.params.possibleAnswer === "scale" ? <SliderComponent /> : null}
-      {route.params.possibleAnswer === "tags" ? (
-        <TagsComponent 
-          answers={tagsArray} 
-          indefiniteAnswers={true} 
-          question = {route.params.question} 
-          questionNumber = {route.params.key + 1} 
-          allQuestionsSum = {route.params.allQuestionsSum}
-        />
-      ) : null}
-      {route.params.possibleAnswer === "open" ? <OpenAnswerComponent /> : null}
-      {route.params.possibleAnswer === "single choice" ? (
-        <TagsComponent answers={singleAnswerArray} indefiniteAnswers={false} />
-      ) : null}
-    </View>
-  );
-}
 
 // Root
 const HomeStack = createStackNavigator();
