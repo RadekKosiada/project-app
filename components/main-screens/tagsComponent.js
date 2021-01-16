@@ -29,6 +29,7 @@ function TagsComponent(props) {
       >
         {answersArray.map((tag, index) => {
           return (
+            // TouchableOpacity is easier to customize; Buttons are very limited in their customizabilty;
             <TouchableOpacity key={index}>
               <Text
                 style={{
