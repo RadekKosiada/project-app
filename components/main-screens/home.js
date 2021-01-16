@@ -16,32 +16,14 @@ import {
 // https://reactnativeelements.com/docs/button
 // import { Icon } from 'react-native-elements'
 
-// https://icons.expo.fyi/FontAwesome/search
-// https://icons.expo.fyi/
-// https://www.youtube.com/watch?v=C4ikFaP0a5o
-import { FontAwesome } from "@expo/vector-icons";
 
 import SliderComponent from "./slider";
 import OpenAnswerComponent from "./openAnswerComponent";
+import TagsComponent from "./tagsComponent";
 
 const questionsData = require("./questions.json");
 const questionsArray = questionsData.questions;
 
-//  go to button
-//https://reactnavigation.org/docs/connecting-navigation-prop/
-function GoToButton({ screenName, data }) {
-  const navigation = useNavigation();
-  return (
-    <FontAwesome.Button
-      name="search"
-      backgroundColor="gray"
-      size={15}
-      color="black"
-      title={`Go to ${screenName}`}
-      onPress={() => navigation.navigate(screenName, data)}
-    />
-  );
-}
 
 // TODO adjust the Input screen? and pass possible answers as autocomplete, but only if Loop is pressed; 
 // divide into simple files;
@@ -70,50 +52,6 @@ function AddTagComponent({route}) {
           borderRadius: 8
         }}
       />
-    </View>
-  );
-}
-
-function TagsComponent(props) {
-  const answersArray = props.answers;
-  const addLoopButton = props.indefiniteAnswers;
-  const question = props.question;
-  const questionNumber = props.questionNumber;
-  const allQuestionsSum = props.allQuestionsSum;
-
-
-  console.log(props);
-  return (
-    <View style={{ flex: 1, alignItems: "stretch", justifyContent: "center" }}>
-      {answersArray.map((tag, index) => {
-        console.log(index, tag);
-        return (
-          <Button
-            // style={styles.tags}
-            style={{
-              backgroundColor: "gray",
-              margin: 8,
-              borderColor: "white",
-              //borderWidth: 1,
-              borderRadius: 8,
-              color: "white",
-              width: "100%",
-              // fontSize: 24,
-              // fontWeight: 'bold',
-              overflow: "hidden",
-              padding: 12,
-              textAlign: "center"
-            }}
-            key={index}
-            title={tag}
-          />
-        );
-      })}
-      {/* button to add more tags */}
-      {addLoopButton ? 
-        <GoToButton screenName="Input" 
-          data={{question, questionNumber, allQuestionsSum}} 
-        /> : null}
     </View>
   );
 }
