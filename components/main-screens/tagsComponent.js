@@ -39,8 +39,13 @@ function TagsComponent(props) {
       })}
       {/* button to add more tags */}
       {addLoopButton ? 
-        <GoToButton screenName="Input" 
-          data={{question, questionNumber, allQuestionsSum, iconName: "search" }} 
+        <GoToButton 
+          style={{ alignItems: "center" }} 
+          screenName="Input" 
+          data={{
+            question, questionNumber, allQuestionsSum, iconName:"search",
+            position: "center"
+          }} 
         /> : null}
     </View>
   );

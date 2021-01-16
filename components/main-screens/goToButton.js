@@ -29,8 +29,9 @@ import { FontAwesome } from "@expo/vector-icons";
 function GoToButton({ screenName, data }) {
   const navigation = useNavigation();
   const iconName = data.iconName;
+  const buttonPosition = data.position;
   return (
-    <View style={{ flex: 1, alignItems: "center",
+    <View style={{ flex: 1, alignItems: buttonPosition,
     }}>
       <FontAwesome.Button
       

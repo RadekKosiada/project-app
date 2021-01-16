@@ -17,7 +17,10 @@ function QuestionScreen({ route, navigation }) {
   return (
     // main View
     <View>
-        <GoToButton style={{ width: 10, alignItems: "right", justifyContent: "left" }} screenName="Home" data={{ iconName: "close" }} />
+        <GoToButton 
+          screenName="Home" 
+          data={{ iconName: "close", position: "flex-end" }} 
+        />
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Text>
           {route.params.key + 1} / {route.params.allQuestionsSum}{" "}
