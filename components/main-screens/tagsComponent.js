@@ -40,7 +40,7 @@ function TagsComponent(props) {
       {/* button to add more tags */}
       {addLoopButton ? 
         <GoToButton screenName="Input" 
-          data={{question, questionNumber, allQuestionsSum}} 
+          data={{question, questionNumber, allQuestionsSum, iconName: "search" }} 
         /> : null}
     </View>
   );
