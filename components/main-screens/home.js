@@ -16,11 +16,15 @@ import {
 // https://reactnativeelements.com/docs/button
 // import { Icon } from 'react-native-elements'
 
-
+// Components
 import SliderComponent from "./slider";
 import OpenAnswerComponent from "./openAnswerComponent";
 import TagsComponent from "./tagsComponent";
 
+//Screens 
+import AddTagScreen from "./addTagScreen";
+
+// Data
 const questionsData = require("./questions.json");
 const questionsArray = questionsData.questions;
 
@@ -28,33 +32,6 @@ const questionsArray = questionsData.questions;
 // TODO adjust the Input screen? and pass possible answers as autocomplete, but only if Loop is pressed; 
 // divide into simple files;
 // check if I  an use Open Answer Component as screen but so it looks like question screen
-
-
-
-function AddTagComponent({route}) {
-  console.log(route);
-  const question = route.params.question;
-  const questionNumber = route.params.questionNumber;
-  const allQuestionsSum = route.params.allQuestionsSum;
-  return (
-    <View style={{ flex: 1, alignItems: "left", justifyContent: "flex-start" }}>
-      <Text>{questionNumber} / {allQuestionsSum}</Text>
-      <Text>{question}</Text>
-      <TextInput
-        placeholder = {"Add a new tag..."}
-        style={{
-          // color: "white",
-          // backgroundColor: "white",
-          borderColor: "black",
-          width: 300,
-          height: 50,
-          borderWidth: 1,
-          borderRadius: 8
-        }}
-      />
-    </View>
-  );
-}
 
 //Screen
 function QuestionScreen({ route, navigation }) {
@@ -104,7 +81,7 @@ function HomeStackScreen() {
           />
         );
       })}
-      <HomeStack.Screen name={"Input"} component={AddTagComponent} />
+      <HomeStack.Screen name={"Input"} component={AddTagScreen} />
     </HomeStack.Navigator>
   );
 }
