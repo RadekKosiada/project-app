@@ -21,7 +21,8 @@ import {
 // https://www.youtube.com/watch?v=C4ikFaP0a5o
 import { FontAwesome } from "@expo/vector-icons";
 
-import SliderComponent from "./slider.js";
+import SliderComponent from "./slider";
+import OpenAnswerComponent from "./openAnswerComponent";
 
 const questionsData = require("./questions.json");
 const questionsArray = questionsData.questions;
@@ -113,26 +114,6 @@ function TagsComponent(props) {
         <GoToButton screenName="Input" 
           data={{question, questionNumber, allQuestionsSum}} 
         /> : null}
-    </View>
-  );
-}
-
-function OpenAnswerComponent() {
-  console.log(styles.possibleAnswer);
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <TextInput
-        //style={styles.possibleAnswer}
-        style={{
-          color: "white",
-          backgroundColor: "white",
-          borderColor: "black",
-          width: 120,
-          height: 250,
-          borderWidth: 1,
-          borderRadius: 8
-        }}
-      />
     </View>
   );
 }
