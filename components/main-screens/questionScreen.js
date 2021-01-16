@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Text, View } from "react-native"; 
 
 // // Components
-import SliderComponent from "./slider";
+import SliderComponent from "./sliderComponent";
 import OpenAnswerComponent from "./openAnswerComponent";
 import TagsComponent from "./tagsComponent";
 
