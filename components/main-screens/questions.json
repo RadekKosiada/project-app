@@ -30,6 +30,6 @@
     "scale", "tags", "single choice", "open"
   ],
   "tags":
-  ["worked", "excercised", "walked", "visited friends", "cooked dinner", "coded", "talked with parents", "watched a movie", "worked out"],
+  ["worked", "excercised", "walked", "visited friends", "cooked dinner", "coded", "talked with parents", "watched a movie", "worked out", "reading a book", "drawing"],
   "single choice answers": ["yes", "no", "sort of"]
 }
