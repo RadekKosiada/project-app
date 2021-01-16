@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Button, ButtonView, Dimensions } from "react-native";
+import { View, TouchableOpacity, Dimensions, Text } from "react-native";
 import GoToButton from "./goToButton";
 import { FlatList } from "react-native-gesture-handler";
 
@@ -9,60 +9,63 @@ function TagsComponent(props) {
   const question = props.question;
   const questionNumber = props.questionNumber;
   const allQuestionsSum = props.allQuestionsSum;
-  const { width } = Dimensions.get('window');
+  const { width } = Dimensions.get("window");
 
   // <Grid>
   // Flex https://www.newline.co/30-days-of-react-native/day-05-layout-with-flexbox
-
+  // Custom Button https://js.coach/?menu%5Bcollections%5D=React%20Native&page=1&query=button
   console.log(props);
   return (
     <View>
-    <View style={{
+      <View
+        style={{
           flexDirection: "row",
           flexWrap: "wrap",
           flex: 1,
           justifyContent: "space-around",
           alignItems: "flex-end",
-          width: width,
-        }}>
-
-      {answersArray.map((tag, index) => {      
+          width: width
+        }}
+      >
+        {answersArray.map((tag, index) => {
           return (
-            <Button
-              // style={styles.tags}
-              style={{
-                backgroundColor: "gray",
-                //marginTop: 8,
-                borderColor: "white",
-                //borderWidth: 1,
-                borderRadius: 8,
-                color: "white",
-                width: width/6,
-                // fontSize: 24,
-                // fontWeight: 'bold',
-                overflow: "hidden",
-                padding: 12,
-                textAlign: "center"
-              }}
-              key={index}
-              title={tag}
-            />
-          );      
-      })}
-     </View>
+            <TouchableOpacity key={index}>
+              <Text
+                style={{
+                  margin: 8,
+                  backgroundColor: "lightgray",
+                  borderColor: "white",
+                  //borderWidth: 1,
+                  borderRadius: 25,
+                  // color: "white",
+                  minWidth: width / 4,
+                  // fontSize: 24,
+                  // fontWeight: 'bold',
+                  overflow: "hidden",
+                  padding: 12,
+                  textAlign: "center"
+                }}
+              >
+                {tag}
+              </Text>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
       {/* button to add more tags */}
-      {addLoopButton ? 
-       
-        <GoToButton 
-          style={{ alignItems: "center" }} 
-          screenName="Input" 
+      {addLoopButton ? (
+        <GoToButton
+          style={{ alignItems: "center" }}
+          screenName="Input"
           data={{
-            question, questionNumber, allQuestionsSum, iconName:"search",
+            question,
+            questionNumber,
+            allQuestionsSum,
+            iconName: "search",
             position: "center"
-          }} 
+          }}
         />
-         : null}
-        
+      ) : null}
     </View>
   );
 }
