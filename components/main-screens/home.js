@@ -21,9 +21,7 @@ import {
 // https://www.youtube.com/watch?v=C4ikFaP0a5o
 import { FontAwesome } from "@expo/vector-icons";
 
-import Slider from "@react-native-community/slider";
-
-// import QuestionButton from "../questions-button";
+import SliderComponent from "./slider.js";
 
 const questionsData = require("./questions.json");
 const questionsArray = questionsData.questions;
@@ -48,31 +46,7 @@ function GoToButton({ screenName, data }) {
 // divide into simple files;
 // check if I  an use Open Answer Component as screen but so it looks like question screen
 
-function SliderComponent() {
-  const [sliderValue, setSliderValue] = useState(0);
 
-  //https://reactnativeforyou.com/how-to-add-a-slider-component-in-react-native/
-  const handleChange = sliderValue => {
-    setSliderValue(sliderValue);
-  };
-
-  return (
-    // https://github.com/callstack/react-native-slider
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>{Math.round(sliderValue)}</Text>
-      <Slider
-        type="range"
-        value={sliderValue}
-        onValueChange={handleChange}
-        style={{ width: 200, height: 40 }}
-        minimumValue={1}
-        maximumValue={5}
-        // minimumTrackTintColor="#FFFFFF"
-        // maximumTrackTintColor="#000000"
-      />
-    </View>
-  );
-}
 
 function AddTagComponent({route}) {
   console.log(route);
