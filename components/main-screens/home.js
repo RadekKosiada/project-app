@@ -76,9 +76,12 @@ function SliderComponent() {
 
 function AddTagComponent({route}) {
   console.log(route);
-  const question = route.params;
+  const question = route.params.question;
+  const questionNumber = route.params.questionNumber;
+  const allQuestionsSum = route.params.allQuestionsSum;
   return (
     <View style={{ flex: 1, alignItems: "left", justifyContent: "flex-start" }}>
+      <Text>{questionNumber} / {allQuestionsSum}</Text>
       <Text>{question}</Text>
       <TextInput
         placeholder = {"Add a new tag..."}
@@ -100,9 +103,11 @@ function TagsComponent(props) {
   const answersArray = props.answers;
   const addLoopButton = props.indefiniteAnswers;
   const question = props.question;
+  const questionNumber = props.questionNumber;
+  const allQuestionsSum = props.allQuestionsSum;
 
 
-  console.log(question);
+  console.log(props);
   return (
     <View style={{ flex: 1, alignItems: "stretch", justifyContent: "center" }}>
       {answersArray.map((tag, index) => {
@@ -130,7 +135,10 @@ function TagsComponent(props) {
         );
       })}
       {/* button to add more tags */}
-      {addLoopButton ? <GoToButton screenName="Input" data={question} /> : null}
+      {addLoopButton ? 
+        <GoToButton screenName="Input" 
+          data={{question, questionNumber, allQuestionsSum}} 
+        /> : null}
     </View>
   );
 }
@@ -169,7 +177,13 @@ function QuestionScreen({ route, navigation }) {
       {/* <Text>{route.params.possibleAnswer}</Text> */}
       {route.params.possibleAnswer === "scale" ? <SliderComponent /> : null}
       {route.params.possibleAnswer === "tags" ? (
-        <TagsComponent answers={tagsArray} indefiniteAnswers={true} question = {route.params.question}/>
+        <TagsComponent 
+          answers={tagsArray} 
+          indefiniteAnswers={true} 
+          question = {route.params.question} 
+          questionNumber = {route.params.key + 1} 
+          allQuestionsSum = {route.params.allQuestionsSum}
+        />
       ) : null}
       {route.params.possibleAnswer === "open" ? <OpenAnswerComponent /> : null}
       {route.params.possibleAnswer === "single choice" ? (
