@@ -29,6 +29,9 @@ const questionsArray = questionsData.questions;
 // divide into simple files;
 // check if I  an use Open Answer Component as screen but so it looks like question screen
 
+// arrows to move between questions? either arros or swipe!
+// close button to all question components
+
 // Root
 const HomeStack = createStackNavigator();
 
@@ -94,12 +97,12 @@ const Home = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   questions: {
-    backgroundColor: "gray",
+    backgroundColor: "lightgray",
     margin: 8,
     borderColor: "white",
     //borderWidth: 1,
-    borderRadius: 8,
-    color: "white",
+    borderRadius: 25,
+    // color: "white",
     width: "100%",
     // fontSize: 24,
     // fontWeight: 'bold',

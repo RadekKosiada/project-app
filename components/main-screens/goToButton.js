@@ -35,9 +35,10 @@ function GoToButton({ screenName, data }) {
     }}>
       <FontAwesome.Button
       
-        style={{marginRight: 0}}
+        style={{marginRight: 0, borderRadius: 25}}
         name={iconName}
-        backgroundColor="gray"
+        backgroundColor="lightgray"
+        
         // size={15}
         color="black"
         title={`Go to ${screenName}`}
