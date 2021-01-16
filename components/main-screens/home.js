@@ -35,9 +35,9 @@ const questionsArray = questionsData.questions;
 
 //Screen
 function QuestionScreen({ route, navigation }) {
-  const tagsArray = questionsData.tags;
-  const singleAnswerArray = questionsData["single choice answers"];
-  // console.log(singleAnswerArray);
+  const tagsArray = route.params.tagsArray;
+  const singleAnswerArray = route.params.singleAnswerArray;
+
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>
@@ -67,6 +67,7 @@ function QuestionScreen({ route, navigation }) {
 const HomeStack = createStackNavigator();
 
 function HomeStackScreen() {
+ 
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen name="Home" component={Home} />
@@ -87,6 +88,8 @@ function HomeStackScreen() {
 }
 
 const Home = ({ navigation }) => {
+  const tagsArray = questionsData.tags;
+  const singleAnswerArray = questionsData["single choice answers"];
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       {questionsArray.map((item, index) => {
@@ -102,6 +105,8 @@ const Home = ({ navigation }) => {
                   CommonActions.navigate({
                     name: question,
                     params: {
+                      tagsArray,
+                      singleAnswerArray,
                       key: index,
                       question: question,
                       allQuestionsSum: questionsArray.length,
