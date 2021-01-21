@@ -56,8 +56,7 @@ function TagsComponent(props) {
       {/* button to add more tags */}
       {addLoopButton ? (
         <GoToButton
-          style={{ alignItems: "center" }}
-          screenName="Input"
+          screenName="Home"
           data={{
             question,
             questionNumber,
