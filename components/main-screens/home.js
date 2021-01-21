@@ -27,10 +27,8 @@ const questionsArray = questionsData.questions;
 
 // TODO adjust the Input screen? and pass possible answers as autocomplete, but only if Loop is pressed; 
 // divide into simple files;
-// check if I  an use Open Answer Component as screen but so it looks like question screen
 
 // arrows to move between questions? either arros or swipe!
-// close button to all question components
 
 // Root
 const HomeStack = createStackNavigator();
