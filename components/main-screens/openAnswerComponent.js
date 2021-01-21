@@ -1,22 +1,24 @@
-import { View, TextInput } from "react-native";
+import { View, TextInput, Text, Dimensions } from "react-native";
 import React from "react";
 
 function OpenAnswerComponent() {
+  var width = Dimensions.get('window').width-40; //full width
+  var height = Dimensions.get('window').height; //full height
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <TextInput
+      <TextInput     
         //style={styles.possibleAnswer}
+        placeholder = "Write down your thoughts..."
         style={{
-          color: "white",
+          alignSelf: "center",
+          color: "black",
           backgroundColor: "white",
           borderColor: "black",
-          width: 120,
-          height: 250,
+          width: '80%',
+          height: '50%',
           borderWidth: 1,
           borderRadius: 8
         }}
       />
-    </View>
   );
 }
 
