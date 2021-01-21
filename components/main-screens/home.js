@@ -24,12 +24,6 @@ import AddTagScreen from "./addTagScreen";
 const questionsData = require("./questions.json");
 const questionsArray = questionsData.questions;
 
-
-// TODO adjust the Input screen? and pass possible answers as autocomplete, but only if Loop is pressed; 
-// divide into simple files;
-
-// arrows to move between questions? either arros or swipe!
-
 // Root
 const HomeStack = createStackNavigator();
 
