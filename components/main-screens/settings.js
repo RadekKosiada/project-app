@@ -14,12 +14,39 @@ import {
   TouchableOpacity,
   Dimensions
 } from "react-native";
+// import { Divider } from 'react-native-elements';
+
+const SettingsButton = ({ navigation, route }) => {
+  console.log("SETTINGS ROUTE", route);
+  return (
+    <TouchableOpacity>
+      <Text style={styles.text}>Placeholder</Text>    
+    </TouchableOpacity>
+  );
+};
+
+function SettingsStackScreen() {
+ 
+  return (
+    <SettingsStack.Navigator>
+      <SettingsStack.Screen name="Settings" component={Settings} />
+
+    </SettingsStack.Navigator>
+  );
+}
 
 const Settings = ({ navigation }) => {
   return (
     <View style={{ flex: 1, alignItems: "center" }}>
       <Text style={styles.header}>Settings</Text>
       <View style={styles.subView}>
+        <SettingsButton
+          
+        />
+        <SettingsButton />
+        <SettingsButton />
+        <SettingsButton />
+
         <TouchableOpacity>
           <Text style={styles.text}>Edit questions</Text>
         </TouchableOpacity>
@@ -41,6 +68,7 @@ const Settings = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
+  button: {},
   header: {
     color: "black",
     fontSize: 22,

@@ -22,6 +22,7 @@ import { Entypo,  MaterialIcons, FontAwesome, Ionicons   } from '@expo/vector-ic
 import HomeStackScreen from "./components/main-screens/home";
 import Calendar from "./components/main-screens/calendar";
 import Stats from "./components/main-screens/stats";
+import SettingsStackScreen from "./components/main-screens/settings";
 import Settings from "./components/main-screens/settings";
 
 import QuestionButton from "./components/questions-button";
@@ -79,7 +80,7 @@ export default function App() {
       <Tab.Screen name="Home" component={HomeStackScreen} />
         <Tab.Screen name="Calendar" component={Calendar} />
         <Tab.Screen name="Stats" component={Stats} />
-        <Tab.Screen name="Settings" component={Settings} />
+        <Tab.Screen name="Settings" component={SettingsStackScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
