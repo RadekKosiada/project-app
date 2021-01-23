@@ -14,6 +14,9 @@ import {
   Button
 } from "react-native";
 
+// https://reactnavigation.org/docs/tab-based-navigation/
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
 // main screens
 import HomeStackScreen from "./components/main-screens/home";
 import Calendar from "./components/main-screens/calendar";
@@ -49,7 +52,30 @@ const Tab = createBottomTabNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+       <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+
+            if (route.name === 'Home') {
+              iconName = focused
+                ? 'ios-information-circle'
+                : 'ios-information-circle-outline';
+
+            } else if (route.name === 'Settings') {
+              iconName = focused ? 'ios-list-box' : 'ios-list';
+            }
+
+            // You can return any component that you like here!
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+        })}
+        tabBarOptions={{
+          activeTintColor: 'blue',
+          inactiveTintColor: 'gray',
+        }}
+      >
+     
       <Tab.Screen name="Home" component={HomeStackScreen} />
         <Tab.Screen name="Calendar" component={Calendar} />
         <Tab.Screen name="Stats" component={Stats} />
