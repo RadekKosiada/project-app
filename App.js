@@ -15,7 +15,8 @@ import {
 } from "react-native";
 
 // https://reactnavigation.org/docs/tab-based-navigation/
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { Entypo,  MaterialIcons, FontAwesome, Ionicons   } from '@expo/vector-icons'; 
+
 
 // main screens
 import HomeStackScreen from "./components/main-screens/home";
@@ -58,14 +59,15 @@ export default function App() {
             let iconName;
 
             if (route.name === 'Home') {
-              iconName = 'ios-information-circle';
+              return <Entypo name='home' size={size} color={color}  />;
 
             } else if (route.name === 'Settings') {
-              iconName = 'ios-list';
-            }
-
-            // You can return any component that you like here!
-            return <Ionicons name={iconName} size={size} color={color} />;
+              return <MaterialIcons name="settings" size={size} color={color} />
+            } else if (route.name === 'Calendar') {
+              return <FontAwesome name="calendar" size={size} color={color} />
+            } else if (route.name === "Stats") {
+              return <Ionicons name="md-stats" size={24} color={color} />
+            }            
           },
         })}
         tabBarOptions={{
