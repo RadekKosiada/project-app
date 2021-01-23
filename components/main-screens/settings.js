@@ -15,12 +15,14 @@ import {
   Dimensions
 } from "react-native";
 // import { Divider } from 'react-native-elements';
+import { AntDesign } from '@expo/vector-icons'; 
 
 const SettingsButton = ({ navigation, route }) => {
   console.log("SETTINGS ROUTE", route);
   return (
-    <TouchableOpacity>
-      <Text style={styles.text}>Placeholder</Text>    
+    <TouchableOpacity style={styles.button}>
+      <Text style={styles.buttonText }>Placeholder</Text> 
+      <AntDesign size={20} color="black" style={styles.buttonIcon} name="right" />
     </TouchableOpacity>
   );
 };
@@ -41,7 +43,7 @@ const Settings = ({ navigation }) => {
       <Text style={styles.header}>Settings</Text>
       <View style={styles.subView}>
         <SettingsButton
-          
+        
         />
         <SettingsButton />
         <SettingsButton />
@@ -68,7 +70,7 @@ const Settings = ({ navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  button: {},
+  button: {  flexDirection: "row"},
   header: {
     color: "black",
     fontSize: 22,
@@ -85,6 +87,19 @@ const styles = StyleSheet.create({
     marginTop: 20,
     color: "black",
     fontSize: 22
+  },
+  buttonText: {
+    alignSelf: 'flex-start',
+      marginLeft: 30,
+      marginTop: 20,
+      color: "black",
+      fontSize: 22
+
+  },
+  buttonIcon: {
+    alignSelf: 'flex-end',
+    //position of this arrow needs adjustment
+    marginLeft: 200
   }
 });
 
