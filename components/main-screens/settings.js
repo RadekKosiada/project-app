@@ -51,55 +51,89 @@ function ContactUs() {
   );
 }
 
-function EditQuestions() {
+function EditQuestions(props) {
+  console.log(props.questionsArray);
   return (
-    <TouchableOpacity>
-      <Text>Questions</Text>
-    </TouchableOpacity>
+    <View>
+      {props.questionsArray.map((item, index) => {
+        return (
+          <TouchableOpacity key={index}>
+            <Text
+              style={styles.text}
+              // onPress={() =>
+              //   navigation.dispatch(
+              //     CommonActions.navigate({
+              //       name: item.question,
+              //       params: {}
+              //     })
+              //   )
+              // }
+            >
+              {item.question}
+            </Text>
+          </TouchableOpacity>
+        );
+      })}
+    </View>
   );
 }
 
 function CalendarPreferences() {
-  return (
-      <Text>Week starts on:</Text>
-  )
+  return <Text>Week starts on:</Text>;
 }
 
-function DeleteData () {
+function DeleteData() {
   return (
-    <View >
-  <Text style={{fontSize: 22, color: 'black' }}>Delete all my data: </Text>
-  <Text>This action... </Text>
-  <TouchableOpacity style={{alignSelf: "center", width: Dimensions.get("window").width/3,  borderRadius: 25, backgroundColor: 'lightgray', padding: 10, }} >
-   <Text>Yes, I want to delete.</Text>
-   </TouchableOpacity>
+    <View>
+      <Text style={{ fontSize: 22, color: "black" }}>Delete all my data: </Text>
+      <Text>This action... </Text>
+      <TouchableOpacity
+        style={{
+          alignSelf: "center",
+          width: Dimensions.get("window").width / 3,
+          borderRadius: 25,
+          backgroundColor: "lightgray",
+          padding: 10
+        }}
+      >
+        <Text>Yes, I want to delete.</Text>
+      </TouchableOpacity>
 
-   <TouchableOpacity style={{alignSelf: "center", width: Dimensions.get("window").width/3,  borderRadius: 25, backgroundColor: 'lightgray', padding: 10, }}>
-   <Text>No, I don't want to delete.</Text>
-   </TouchableOpacity>
-  </View>
-  
-  )
+      <TouchableOpacity
+        style={{
+          alignSelf: "center",
+          width: Dimensions.get("window").width / 3,
+          borderRadius: 25,
+          backgroundColor: "lightgray",
+          padding: 10
+        }}
+      >
+        <Text>No, I don't want to delete.</Text>
+      </TouchableOpacity>
+    </View>
+  );
 }
 
 //like QuestionScreen
-function SettingScreen({ route, navigation }) {
-  console.log("SettingScreen: ", route.name);
+function SettingScreen({ route }) {
+  // console.log("SettingScreen: ", route.params);
+  const questionsArray = route.params.questionsArray;
   if (route.name === "Contact us") {
     return <ContactUs />;
   } else if (route.name === "Edit questions") {
-    return <EditQuestions />
+    return <EditQuestions questionsArray={questionsArray} />;
   } else if (route.name === "Calendar preferences") {
-    return <CalendarPreferences />
+    return <CalendarPreferences />;
   } else if (route.name === "Delete data") {
-    return <DeleteData />
+    return <DeleteData />;
   }
 }
 // Root
 const SettingsStack = createStackNavigator();
 
 function SettingsStackScreen(props) {
-  console.log('SettingsStackScreen: ', props.extraData)
+  const questionsArray = props.questionsArray;
+  // console.log('SettingsStackScreen: ', props.questionsArray)
   return (
     <SettingsStack.Navigator>
       <SettingsStack.Screen name="Settings" component={Settings} />
@@ -110,6 +144,8 @@ function SettingsStackScreen(props) {
             name={category}
             key={index}
             component={SettingScreen}
+            // https://stackoverflow.com/a/60700220
+            initialParams={{ questionsArray: questionsArray }}
           />
         );
       })}
@@ -132,9 +168,7 @@ const Settings = ({ route, navigation }) => {
                   navigation.dispatch(
                     CommonActions.navigate({
                       name: category,
-                      params: {
-                        questions: '456'
-                      }
+                      params: {}
                     })
                   )
                 }
