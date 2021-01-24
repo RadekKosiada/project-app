@@ -86,7 +86,7 @@ export default function App() {
         <Tab.Screen name="Stats" component={Stats} />
         {/* https://reactnavigation.org/docs/hello-react-navigation/#passing-additional-props */}
         <Tab.Screen name="Settings">
-          {props => <SettingsStackScreen {...props} extraData={'someData'} />}
+          {props => <SettingsStackScreen {...props} questionsArray={questionsArray} />}
           </Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>
