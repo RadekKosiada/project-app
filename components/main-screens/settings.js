@@ -98,7 +98,8 @@ function SettingScreen({ route, navigation }) {
 // Root
 const SettingsStack = createStackNavigator();
 
-function SettingsStackScreen() {
+function SettingsStackScreen(props) {
+  console.log('SettingsStackScreen: ', props.extraData)
   return (
     <SettingsStack.Navigator>
       <SettingsStack.Screen name="Settings" component={Settings} />
@@ -116,7 +117,8 @@ function SettingsStackScreen() {
   );
 }
 
-const Settings = ({ navigation }) => {
+const Settings = ({ route, navigation }) => {
+  // console.log('Settings: ', route)
   return (
     <View style={{ flex: 1, alignItems: "center" }}>
       {/* <Text style={styles.header}>Settings</Text> */}
@@ -130,7 +132,9 @@ const Settings = ({ navigation }) => {
                   navigation.dispatch(
                     CommonActions.navigate({
                       name: category,
-                      params: {}
+                      params: {
+                        questions: '456'
+                      }
                     })
                   )
                 }

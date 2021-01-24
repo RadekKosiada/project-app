@@ -27,6 +27,10 @@ import Settings from "./components/main-screens/settings";
 
 import QuestionButton from "./components/questions-button";
 
+// Data
+const questionsData = require("./questions.json");
+const questionsArray = questionsData.questions;
+
 const Tab = createBottomTabNavigator();
 
 // const MainMenu = ({ navigation }) => {
@@ -80,7 +84,10 @@ export default function App() {
       <Tab.Screen name="Home" component={HomeStackScreen} />
         <Tab.Screen name="Calendar" component={Calendar} />
         <Tab.Screen name="Stats" component={Stats} />
-        <Tab.Screen name="Settings" component={SettingsStackScreen} />
+        {/* https://reactnavigation.org/docs/hello-react-navigation/#passing-additional-props */}
+        <Tab.Screen name="Settings">
+          {props => <SettingsStackScreen {...props} extraData={'someData'} />}
+          </Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>
   );
