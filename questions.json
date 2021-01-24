@@ -1,0 +1,41 @@
+{
+  "questions": [
+    {
+      "question":  "How did you sleep last night?",
+      "possible answer": "scale"
+    },
+    {
+      "question": "How do you feel today?",
+      "possible answer": "scale"
+    },
+    {
+      "question": "What did you do today?",
+      "possible answer": "tags"
+    },
+    {
+      "question": "Did you observe your boundaries?",
+      "possible answer": "single choice"
+    },
+    {
+      "question": "What did you do for your self care?",
+      "possible answer": "tags"
+    },
+    {
+      "question": "What will you do tomorrow?",
+      "possible answer": "open"
+    }
+  ],
+  "possible answers": 
+  [
+    "scale", "tags", "single choice", "open"
+  ],
+  "tags":
+  ["worked", "excercised", "walked", "visited friends", "cooked dinner", "coded", "talked with parents", "watched a movie", "worked out", "reading a book", "drawing"],
+  "single choice answers": ["yes", "no", "sort of"],
+  "settingsCategories" : [
+    "Edit questions", 
+    "Calendar preferences",
+    "Delete data",
+    "Contact us"
+   ]
+}
