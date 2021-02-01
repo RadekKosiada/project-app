@@ -15,7 +15,7 @@ import {
   Dimensions
 } from "react-native";
 // import { Divider } from 'react-native-elements';
-import { AntDesign, Feather, MaterialIcons  } from "@expo/vector-icons";
+import { AntDesign, Feather, MaterialIcons } from "@expo/vector-icons";
 
 const questionsData = require("./questions.json");
 const settingCategoriesArr = questionsData.settingsCategories;
@@ -57,23 +57,43 @@ function EditQuestions(props) {
     <View>
       {props.questionsArray.map((item, index) => {
         return (
-          <TouchableOpacity key={index} style={{flexDirection: "row", marginLeft: 20 }}>
-            <MaterialIcons name="drag-handle" size={24} color="black" style={{marginTop: 20, alignSelf: "center"}} />
-            <Text
-              style={styles.text}
-              // onPress={() =>
-              //   navigation.dispatch(
-              //     CommonActions.navigate({
-              //       name: item.question,
-              //       params: {}
-              //     })
-              //   )
-              // }
-            >
-              {item.question}
-            </Text>
-            <Feather name="edit-2" size={24} color="black" style={{marginTop: 20, alignSelf: "center" }} />
-          </TouchableOpacity>
+          <View
+            key={index}
+            style={{ flexDirection: "row", marginLeft: 20 }}
+          >
+            <View style={{ flexDirection: "row" }}>
+              <MaterialIcons
+                name="drag-handle"
+                size={24}
+                color="black"
+                style={{ marginTop: 20, alignSelf: "center" }}
+                 onPress={() =>
+                  console.log('Drag was pressed')
+                }
+              />
+              <Text
+                style={styles.text}
+                // onPress={() =>
+                //   navigation.dispatch(
+                //     CommonActions.navigate({
+                //       name: item.question,
+                //       params: {}
+                //     })
+                //   )
+                // }
+              >
+                {item.question}
+              </Text>
+            </View>
+            <TouchableOpacity style={{ marginTop: 20, alignSelf: "center" }}>
+            <Feather
+              name="edit-2"
+              size={24}
+              color="black"
+              
+            />
+            </TouchableOpacity>
+          </View>
         );
       })}
     </View>
@@ -208,6 +228,7 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start"
   },
   text: {
+    // flex: 1,
     marginTop: 20,
     color: "black",
     fontSize: 20
