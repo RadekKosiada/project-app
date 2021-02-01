@@ -1,5 +1,9 @@
 import "react-native-gesture-handler";
-import { NavigationContainer, CommonActions, useNavigation } from "@react-navigation/native";
+import {
+  NavigationContainer,
+  CommonActions,
+  useNavigation
+} from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
@@ -58,41 +62,31 @@ function EditQuestions(props) {
     <View>
       {props.questionsArray.map((item, index) => {
         return (
-          <View
-            key={index}
-            style={{ flexDirection: "row", marginLeft: 20 }}
-          >
+          <View key={index} style={{ flexDirection: "row", marginLeft: 20 }}>
             <View style={{ flexDirection: "row" }}>
               <MaterialIcons
                 name="drag-handle"
                 size={24}
                 color="black"
                 style={{ marginTop: 20, alignSelf: "center" }}
-                 onPress={() =>
-                  console.log('Drag was pressed')
-                }
+                onPress={() => console.log("Drag was pressed")}
               />
-              <Text
-                style={styles.text}
-              >
-                {item.question}
-              </Text>
+              <Text style={styles.text}>{item.question}</Text>
             </View>
             <TouchableOpacity style={{ marginTop: 20, alignSelf: "center" }}>
-            <Feather
-              name="edit-2"
-              size={24}
-              color="black"
-              onPress={() =>
-                
+              <Feather
+                name="edit-2"
+                size={24}
+                color="black"
+                onPress={() =>
                   navigation.dispatch(
                     CommonActions.navigate({
                       name: item.question,
-                      params: {question: item.question}
+                      params: { question: item.question }
                     })
                   )
                 }
-            />
+              />
             </TouchableOpacity>
           </View>
         );
@@ -101,17 +95,25 @@ function EditQuestions(props) {
   );
 }
 
-function EditQuestionScreen() {
-
+function EditQuestionScreen({ route, navigation }) {
+  console.log(route.params);
   return (
-    <Text>
-  
-  
-  EditQuestionScreen
-    </Text>
+    <View>
+      <Text>Question</Text>
+      <TextInput
+        style={{ borderWidth: 2, borderRadius: 10 }}
+        placeholder={route.params.question}
+      ></TextInput>
+
+      <Text>Answer Type</Text>
+      {/* DROPDOWN */}
+
+      <TouchableOpacity>
+        <Text>Save</Text>
+      </TouchableOpacity>
+    </View>
   );
 }
-
 
 function CalendarPreferences() {
   return <Text>Week starts on:</Text>;
@@ -168,13 +170,14 @@ const SettingsStack = createStackNavigator();
 
 function SettingsStackScreen(props) {
   const questionsArray = props.questionsArray;
-  console.log('SettingsStackScreen: ', props.questionsArray)
+  console.log("SettingsStackScreen: ", props.questionsArray);
   return (
     <SettingsStack.Navigator>
       <SettingsStack.Screen name="Settings" component={Settings} />
 
+      {/* Different settings  */}
       {settingCategoriesArr.map((category, index) => {
-        console.log('settings category: ', category)
+        console.log("settings category: ", category);
         return (
           <SettingsStack.Screen
             name={category}
@@ -185,7 +188,7 @@ function SettingsStackScreen(props) {
           />
         );
       })}
-
+      {/* Edit question screen */}
       {questionsArray.map((item, index) => {
         let question = item.question;
         return (
@@ -193,10 +196,10 @@ function SettingsStackScreen(props) {
             name={question}
             key={index}
             component={EditQuestionScreen}
+            params={question}
           />
         );
       })}
-
     </SettingsStack.Navigator>
   );
 }
