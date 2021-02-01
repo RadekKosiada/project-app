@@ -1,5 +1,5 @@
 import "react-native-gesture-handler";
-import { NavigationContainer, CommonActions } from "@react-navigation/native";
+import { NavigationContainer, CommonActions, useNavigation } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
@@ -52,6 +52,7 @@ function ContactUs() {
 }
 
 function EditQuestions(props) {
+  const navigation = useNavigation();
   console.log(props.questionsArray);
   return (
     <View>
@@ -73,14 +74,6 @@ function EditQuestions(props) {
               />
               <Text
                 style={styles.text}
-                // onPress={() =>
-                //   navigation.dispatch(
-                //     CommonActions.navigate({
-                //       name: item.question,
-                //       params: {}
-                //     })
-                //   )
-                // }
               >
                 {item.question}
               </Text>
@@ -90,7 +83,15 @@ function EditQuestions(props) {
               name="edit-2"
               size={24}
               color="black"
-              
+              onPress={() =>
+                
+                  navigation.dispatch(
+                    CommonActions.navigate({
+                      name: item.question,
+                      params: {question: item.question}
+                    })
+                  )
+                }
             />
             </TouchableOpacity>
           </View>
@@ -99,6 +100,18 @@ function EditQuestions(props) {
     </View>
   );
 }
+
+function EditQuestionScreen() {
+
+  return (
+    <Text>
+  
+  
+  EditQuestionScreen
+    </Text>
+  );
+}
+
 
 function CalendarPreferences() {
   return <Text>Week starts on:</Text>;
@@ -155,12 +168,13 @@ const SettingsStack = createStackNavigator();
 
 function SettingsStackScreen(props) {
   const questionsArray = props.questionsArray;
-  // console.log('SettingsStackScreen: ', props.questionsArray)
+  console.log('SettingsStackScreen: ', props.questionsArray)
   return (
     <SettingsStack.Navigator>
       <SettingsStack.Screen name="Settings" component={Settings} />
 
       {settingCategoriesArr.map((category, index) => {
+        console.log('settings category: ', category)
         return (
           <SettingsStack.Screen
             name={category}
@@ -171,6 +185,18 @@ function SettingsStackScreen(props) {
           />
         );
       })}
+
+      {questionsArray.map((item, index) => {
+        let question = item.question;
+        return (
+          <SettingsStack.Screen
+            name={question}
+            key={index}
+            component={EditQuestionScreen}
+          />
+        );
+      })}
+
     </SettingsStack.Navigator>
   );
 }
