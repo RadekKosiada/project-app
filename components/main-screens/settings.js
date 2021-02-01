@@ -15,7 +15,7 @@ import {
   Dimensions
 } from "react-native";
 // import { Divider } from 'react-native-elements';
-import { AntDesign } from "@expo/vector-icons";
+import { AntDesign, Feather, MaterialIcons  } from "@expo/vector-icons";
 
 const questionsData = require("./questions.json");
 const settingCategoriesArr = questionsData.settingsCategories;
@@ -57,7 +57,8 @@ function EditQuestions(props) {
     <View>
       {props.questionsArray.map((item, index) => {
         return (
-          <TouchableOpacity key={index}>
+          <TouchableOpacity key={index} style={{flexDirection: "row", marginLeft: 20 }}>
+            <MaterialIcons name="drag-handle" size={24} color="black" style={{marginTop: 20, alignSelf: "center"}} />
             <Text
               style={styles.text}
               // onPress={() =>
@@ -71,6 +72,7 @@ function EditQuestions(props) {
             >
               {item.question}
             </Text>
+            <Feather name="edit-2" size={24} color="black" style={{marginTop: 20, alignSelf: "center" }} />
           </TouchableOpacity>
         );
       })}
@@ -206,10 +208,9 @@ const styles = StyleSheet.create({
     alignSelf: "flex-start"
   },
   text: {
-    marginLeft: 30,
     marginTop: 20,
     color: "black",
-    fontSize: 22
+    fontSize: 20
   },
   buttonText: {
     alignSelf: "flex-start",
