@@ -30,6 +30,7 @@ import QuestionButton from "./components/questions-button";
 // Data
 const questionsData = require("./questions.json");
 const questionsArray = questionsData.questions;
+const answerTypeArray = questionsData["answer type"];
 
 const Tab = createBottomTabNavigator();
 
@@ -86,7 +87,9 @@ export default function App() {
         <Tab.Screen name="Stats" component={Stats} />
         {/* https://reactnavigation.org/docs/hello-react-navigation/#passing-additional-props */}
         <Tab.Screen name="Settings">
-          {props => <SettingsStackScreen {...props} questionsArray={questionsArray} />}
+          {props => <SettingsStackScreen {...props} questionsArray={questionsArray} 
+          answerTypeArray={answerTypeArray}
+          />}
           </Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>
