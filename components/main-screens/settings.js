@@ -95,21 +95,37 @@ function EditQuestions(props) {
 }
 
 function EditQuestionScreen(props) {
-  console.log("EditQuestionScreen triggered ", props.question);
+  console.log("EditQuestionScreen triggered ", props);
   return (
-    <View style={{width: Dimensions.get("window").width * 8/10, margin: 20 }}>
-      <Text style={{fontSize: 20, color: "black" }}>Question</Text>
+    <View
+      style={{ width: (Dimensions.get("window").width * 8) / 10, margin: 20 }}
+    >
+      <Text style={{ fontSize: 20, color: "black" }}>Question</Text>
       <TextInput
         style={{ fontSize: 20, borderRadius: 10, backgroundColor: "lightgray" }}
         placeholder={props.question}
       ></TextInput>
 
-      <Text style={{fontSize: 20, marginTop: 40, color: "black" }}>Answer Type</Text>
-      {/* DROPDOWN */}
+      <Text style={{ fontSize: 20, marginTop: 40, color: "black" }}>
+        Answer Type
+      </Text>
+      {/* <Picker>
+        <Picker.Item label="Java" value="java" />
+        <Picker.Item label="JavaScript" value="js" />
+      </Picker> */}
 
       <TouchableOpacity>
-        <Text style={{fontSize: 20, color: "black", alignSelf: "center", marginTop: 40 }}>Save</Text>
-      </TouchableOpacity> 
+        <Text
+          style={{
+            fontSize: 20,
+            color: "black",
+            alignSelf: "center",
+            marginTop: 40
+          }}
+        >
+          Save
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -152,7 +168,7 @@ function DeleteData() {
 
 //like QuestionScreen
 function SettingScreen({ route }) {
- // console.log("SettingScreen: ", route.params);
+  // console.log("SettingScreen: ", route.params);
   const questionsArray = route.params.questionsArray;
   if (route.name === "Contact us") {
     return <ContactUs />;
@@ -194,9 +210,10 @@ function SettingsStackScreen(props) {
         return (
           <SettingsStack.Screen name={question} key={index}>
             {props => (
-            <EditQuestionScreen 
-              question={question}
-               />
+              <EditQuestionScreen
+                question={question}
+                // dataForDrop={["abc", "def", "ghi"]}
+              />
             )}
           </SettingsStack.Screen>
         );
