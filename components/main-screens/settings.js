@@ -57,7 +57,6 @@ function ContactUs() {
 
 function EditQuestions(props) {
   const navigation = useNavigation();
-  console.log(props.questionsArray);
   return (
     <View>
       {props.questionsArray.map((item, index) => {
@@ -95,22 +94,22 @@ function EditQuestions(props) {
   );
 }
 
-function EditQuestionScreen({ route, navigation }) {
-  console.log(route.params);
+function EditQuestionScreen(props) {
+  console.log("EditQuestionScreen triggered ", props.question);
   return (
-    <View>
-      <Text>Question</Text>
+    <View style={{width: Dimensions.get("window").width * 8/10, margin: 20 }}>
+      <Text style={{fontSize: 20, color: "black" }}>Question</Text>
       <TextInput
-        style={{ borderWidth: 2, borderRadius: 10 }}
-        placeholder={route.params.question}
+        style={{ fontSize: 20, borderRadius: 10, backgroundColor: "lightgray" }}
+        placeholder={props.question}
       ></TextInput>
 
-      <Text>Answer Type</Text>
+      <Text style={{fontSize: 20, marginTop: 40, color: "black" }}>Answer Type</Text>
       {/* DROPDOWN */}
 
       <TouchableOpacity>
-        <Text>Save</Text>
-      </TouchableOpacity>
+        <Text style={{fontSize: 20, color: "black", alignSelf: "center", marginTop: 40 }}>Save</Text>
+      </TouchableOpacity> 
     </View>
   );
 }
@@ -153,7 +152,7 @@ function DeleteData() {
 
 //like QuestionScreen
 function SettingScreen({ route }) {
-  // console.log("SettingScreen: ", route.params);
+ // console.log("SettingScreen: ", route.params);
   const questionsArray = route.params.questionsArray;
   if (route.name === "Contact us") {
     return <ContactUs />;
@@ -188,16 +187,27 @@ function SettingsStackScreen(props) {
           />
         );
       })}
-      {/* Edit question screen */}
+      {/* Edit question screen
+      Another way to nest component in a stack screen */}
       {questionsArray.map((item, index) => {
         let question = item.question;
         return (
-          <SettingsStack.Screen
-            name={question}
-            key={index}
-            component={EditQuestionScreen}
-            params={question}
-          />
+          // <SettingsStack.Screen
+          //   name={question}
+          //   key={index}
+          //   component={EditQuestionScreen}
+          //   initialParams={{ 
+          //     question: question,
+          //     buttonText: "Save"
+          //    }}
+          // />
+          <SettingsStack.Screen name={question} key={index}>
+            {props => (
+            <EditQuestionScreen 
+              question={question}
+               />
+            )}
+          </SettingsStack.Screen>
         );
       })}
     </SettingsStack.Navigator>
