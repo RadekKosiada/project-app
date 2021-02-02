@@ -192,15 +192,6 @@ function SettingsStackScreen(props) {
       {questionsArray.map((item, index) => {
         let question = item.question;
         return (
-          // <SettingsStack.Screen
-          //   name={question}
-          //   key={index}
-          //   component={EditQuestionScreen}
-          //   initialParams={{ 
-          //     question: question,
-          //     buttonText: "Save"
-          //    }}
-          // />
           <SettingsStack.Screen name={question} key={index}>
             {props => (
             <EditQuestionScreen 
