@@ -57,7 +57,7 @@ function ContactUs() {
 }
 
 function EditQuestions(props) {
-  console.log("EditQuestions", props.questionsArray)
+  console.log("EditQuestions", props)
   const navigation = useNavigation();
   return (
     <View>
@@ -97,8 +97,8 @@ function EditQuestions(props) {
 }
 
 function EditQuestionScreen(props) {
-  console.log("EditQuestionScreen triggered ", props);
-  const items = ["abc", "def", "ghi"]
+  console.log("EditQuestionScreen triggered +++++++", props);
+  const answerTypes = props.answerTypeArray;
   return (
     <View
       style={{ flex: 1, width: (Dimensions.get("window").width * 8) / 10, margin: 20 }}
@@ -115,22 +115,27 @@ function EditQuestionScreen(props) {
 
       <View style={styles.picker}>
       <Picker >
-          {items.map((item, index) => 
+          {answerTypes.map((type, index) => 
             <Picker.Item 
             key={index}
-            value ={item} 
-            label={item} 
+            value ={type} 
+            label={type} 
           />)}
       </Picker>
       </View>
-
+      
       <TouchableOpacity>
         <Text
           style={{
             fontSize: 20,
             color: "black",
             alignSelf: "center",
-            marginTop: 40
+            marginTop: 40,
+            borderRadius: 20,
+            backgroundColor: "lightgray",
+            padding: 10
+
+
           }}
         >
           Save
@@ -178,7 +183,7 @@ function DeleteData() {
 
 //like QuestionScreen
 function SettingScreen({ route }) {
-  // console.log("SettingScreen: ", route.params);
+  console.log("SettingScreen !!!!!!!!: ", route.params);
   const questionsArray = route.params.questionsArray;
   if (route.name === "Contact us") {
     return <ContactUs />;
@@ -195,6 +200,7 @@ const SettingsStack = createStackNavigator();
 
 function SettingsStackScreen(props) {
   const questionsArray = props.questionsArray;
+  const answerTypeArray = props.answerTypeArray;
   console.log("SettingsStackScreen: ", props.questionsArray);
   return (
     <SettingsStack.Navigator>
@@ -202,7 +208,7 @@ function SettingsStackScreen(props) {
 
       {/* Different settings  */}
       {settingCategoriesArr.map((category, index) => {
-        console.log("settings category: ", category);
+        // console.log("settings category: ", category);
         return (
           <SettingsStack.Screen
             name={category}
@@ -222,7 +228,8 @@ function SettingsStackScreen(props) {
             {props => (
               <EditQuestionScreen
                 question={question}
-                // dataForDrop={["abc", "def", "ghi"]}
+                questionsArray={questionsArray}
+                answerTypeArray={answerTypeArray}
               />
             )}
           </SettingsStack.Screen>
