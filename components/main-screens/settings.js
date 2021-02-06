@@ -18,7 +18,8 @@ import {
   TouchableOpacity,
   Dimensions
 } from "react-native";
-// import { Divider } from 'react-native-elements';
+
+// import { Divider, ListItem } from 'react-native-elements';
 import { AntDesign, Feather, MaterialIcons } from "@expo/vector-icons";
 
 const questionsData = require("./questions.json");
@@ -56,6 +57,7 @@ function ContactUs() {
 }
 
 function EditQuestions(props) {
+  console.log("EditQuestions", props.questionsArray)
   const navigation = useNavigation();
   return (
     <View>
@@ -109,10 +111,6 @@ function EditQuestionScreen(props) {
       <Text style={{ fontSize: 20, marginTop: 40, color: "black" }}>
         Answer Type
       </Text>
-      {/* <Picker>
-        <Picker.Item label="Java" value="java" />
-        <Picker.Item label="JavaScript" value="js" />
-      </Picker> */}
 
       <TouchableOpacity>
         <Text
