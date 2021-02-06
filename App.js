@@ -13,6 +13,7 @@ import {
   Image,
   Button
 } from "react-native";
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 // https://reactnavigation.org/docs/tab-based-navigation/
 import { Entypo,  MaterialIcons, FontAwesome, Ionicons   } from '@expo/vector-icons'; 
@@ -58,6 +59,7 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
+    <SafeAreaProvider>
     <NavigationContainer>
        <Tab.Navigator
         screenOptions={({ route }) => ({
@@ -93,6 +95,7 @@ export default function App() {
           </Tab.Screen>
       </Tab.Navigator>
     </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
 
