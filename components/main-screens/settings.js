@@ -19,7 +19,7 @@ import {
   Dimensions, Picker
 } from "react-native";
 
-// import { Divider, ListItem } from 'react-native-elements';
+import { ListItem, Icon } from 'react-native-elements';
 import { AntDesign, Feather, MaterialIcons } from "@expo/vector-icons";
 
 const questionsData = require("./questions.json");
@@ -103,6 +103,15 @@ function EditQuestionScreen(props) {
     <View
       style={{ flex: 1, width: (Dimensions.get("window").width * 8) / 10, margin: 20 }}
     >
+
+      {/* HEADER */}
+      <View style={{flexDirection: "row", alignItems: "center"}}>
+        <TouchableOpacity style={{ }}>
+          <Text style={{ color: "black" }}>Cancel</Text>
+        </TouchableOpacity>
+        <Text style={{ fontWeight: "900", fontSize: 20, color: "black" }}>Edit Question</Text>
+      </View>
+      {/* EDITING PART */}
       <Text style={{ fontSize: 20, color: "black" }}>Question</Text>
       <TextInput
         style={{ fontSize: 20, borderRadius: 10, backgroundColor: "lightgray" }}
