@@ -37,8 +37,5 @@
     "Calendar preferences",
     "Delete data",
     "Contact us"
-   ],
-   "answer type": [
-     "Yes/No/Sort of", "Textbox", "Multi-select", "Slider"
    ]
 }
