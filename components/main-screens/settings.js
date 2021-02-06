@@ -16,7 +16,7 @@ import {
   Image,
   Button,
   TouchableOpacity,
-  Dimensions
+  Dimensions, Picker
 } from "react-native";
 
 // import { Divider, ListItem } from 'react-native-elements';
@@ -98,9 +98,10 @@ function EditQuestions(props) {
 
 function EditQuestionScreen(props) {
   console.log("EditQuestionScreen triggered ", props);
+  const items = ["abc", "def", "ghi"]
   return (
     <View
-      style={{ width: (Dimensions.get("window").width * 8) / 10, margin: 20 }}
+      style={{ flex: 1, width: (Dimensions.get("window").width * 8) / 10, margin: 20 }}
     >
       <Text style={{ fontSize: 20, color: "black" }}>Question</Text>
       <TextInput
@@ -111,6 +112,17 @@ function EditQuestionScreen(props) {
       <Text style={{ fontSize: 20, marginTop: 40, color: "black" }}>
         Answer Type
       </Text>
+
+      <View style={styles.picker}>
+      <Picker >
+          {items.map((item, index) => 
+            <Picker.Item 
+            key={index}
+            value ={item} 
+            label={item} 
+          />)}
+      </Picker>
+      </View>
 
       <TouchableOpacity>
         <Text
@@ -289,6 +301,14 @@ const styles = StyleSheet.create({
     alignSelf: "flex-end",
     //position of this arrow needs adjustment
     margin: 3
+  },
+  picker: {
+    fontSize: 20, 
+    borderRadius: 10, 
+    backgroundColor: "lightgray",
+    // height: 200,
+    // width: "80%",
+    // backgroundColor: "white"
   }
 });
 
