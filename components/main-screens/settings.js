@@ -123,6 +123,18 @@ function EditQuestionScreen(props) {
           />)}
       </Picker>
       </View>
+
+      <Text style={{ fontSize: 20, color: "black" }}>Where 1 is</Text>
+      <TextInput
+        style={{ fontSize: 20, borderRadius: 10, backgroundColor: "lightgray" }}
+        placeholder="Tossing and turning"
+      ></TextInput>
+
+      <Text style={{ fontSize: 20, color: "black" }}>... and 5 is</Text>
+      <TextInput
+        style={{ fontSize: 20, borderRadius: 10, backgroundColor: "lightgray" }}
+        placeholder="Like a baby"
+      ></TextInput>
       
       <TouchableOpacity>
         <Text
