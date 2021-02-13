@@ -232,7 +232,6 @@ function SettingsStackScreen(props) {
       {settingCategoriesArr.map((category, index) => {
         // console.log("settings category: ", category);
         return (
-
           <SettingsStack.Screen
             name={category}
             key={index}
@@ -267,31 +266,28 @@ const Settings = ({ route, navigation }) => {
   // console.log('Settings: ', route)
   return (
     <View>
-      {/* <Text style={styles.header}>Settings</Text> */}
-      <View>
-        {settingCategoriesArr.map((category, index) => {
-          return (
-            <ListItem key={index} bottomDivider
+      {settingCategoriesArr.map((category, index) => {
+        return (
+          <ListItem
+            style={{ marginLeft: 20, marginRight: 20, marginTop: 10 }}
+            key={index}
+            bottomDivider
             onPress={() =>
-                    navigation.dispatch(
-                      CommonActions.navigate({
-                        name: category,
-                        params: {}
-                      })
-                    )
-                  }
-            >
-              <ListItem.Content>
-                <ListItem.Title>{category}</ListItem.Title>
-              </ListItem.Content>
-              <Icon 
-                name="right"
-                type="antdesign"
-              />
-            </ListItem>
-          );
-        })}
-      </View>
+              navigation.dispatch(
+                CommonActions.navigate({
+                  name: category,
+                  params: {}
+                })
+              )
+            }
+          >
+            <ListItem.Content>
+              <ListItem.Title>{category}</ListItem.Title>
+            </ListItem.Content>
+            <Icon name="right" type="antdesign" />
+          </ListItem>
+        );
+      })}
     </View>
   );
 };
