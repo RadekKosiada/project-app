@@ -208,13 +208,29 @@ function SettingsStackScreen(props) {
             name={question} 
             key={index}
             options={{ 
+              headerTitleStyle: { alignSelf: 'center', marginRight: 20 },
               headerTitle: "Edit Question", 
+
               headerRight: () => (
-                < Button
-                  onPress = {() => alert('This is clicked')}
-                title="Info"
-                color="black"
-                />
+                <View style={{flex: 1, flexDirection: "row"}}>
+                  <Icon
+                    reverse
+                    name="eye-off"
+                    type="feather"
+                    color="white"
+                    reverseColor="black"
+                    onPress={() => console.log("Eye was pressed")}
+                  />
+                  <Icon
+                  reverse
+                    name="trash"
+                    type="feather"
+                    color="white"
+                    reverseColor="black"
+                    onPress={() => console.log("Trash was pressed")}
+                  />
+                </View>
+
 
               )
             }}
