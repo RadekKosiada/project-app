@@ -127,6 +127,14 @@ function EditQuestionScreen(props) {
       ></TextInput>
 
       <TouchableOpacity 
+        onPress={() =>
+          navigation.dispatch(
+            CommonActions.navigate({
+              name: 'Edit questions',
+              params: {}
+            })
+          )
+        }
       >
         <Text
           style={{
