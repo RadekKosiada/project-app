@@ -84,6 +84,7 @@ function EditQuestions(props) {
 }
 
 function EditQuestionScreen(props) {
+  const navigation = useNavigation();
   console.log("EditQuestionScreen triggered +++++++", props);
   const answerTypes = props.answerTypeArray;
   return (
@@ -94,15 +95,6 @@ function EditQuestionScreen(props) {
         margin: 20
       }}
     >
-      {/* HEADER */}
-      <View style={{ flexDirection: "row", alignItems: "center" }}>
-        <TouchableOpacity style={{}}>
-          <Text style={{ color: "black" }}>Cancel</Text>
-        </TouchableOpacity>
-        <Text style={{ fontWeight: "900", fontSize: 20, color: "black" }}>
-          Edit Question
-        </Text>
-      </View>
       {/* EDITING PART */}
       <Text style={{ fontSize: 20, color: "black" }}>Question</Text>
       <TextInput
@@ -134,7 +126,8 @@ function EditQuestionScreen(props) {
         placeholder="Like a baby"
       ></TextInput>
 
-      <TouchableOpacity>
+      <TouchableOpacity 
+      >
         <Text
           style={{
             fontSize: 20,
