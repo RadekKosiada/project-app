@@ -5,13 +5,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import {
-  StyleSheet,
-  Text,
-  ScrollView,
-  View,
-  TextInput,
-  Image,
-  Button
+  StyleSheet
 } from "react-native";
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
@@ -25,7 +19,6 @@ import Calendar from "./components/main-screens/calendar";
 import Stats from "./components/main-screens/stats";
 import SettingsStackScreen from "./components/main-screens/settings";
 import Settings from "./components/main-screens/settings";
-
 import QuestionButton from "./components/questions-button";
 
 // Data
