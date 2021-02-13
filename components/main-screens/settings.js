@@ -64,22 +64,22 @@ function EditQuestions(props) {
     <View>
       {props.questionsArray.map((item, index) => {
         return (
-
-          <View key={index} style={{ marginLeft: 20, marginRight: 20, marginTop: 10  }}>
-          
-          <ListItem key={index} bottomDivider>
-            <Icon
-                name='drag-handle'
-                type='material-icons'
+          <View
+            key={index}
+            style={{ marginLeft: 20, marginRight: 20, marginTop: 10 }}
+          >
+            <ListItem key={index} bottomDivider>
+              <Icon
+                name="drag-handle"
+                type="material-icons"
                 onPress={() => console.log("Drag was pressed")}
-            />
-            <ListItem.Content>
-              <ListItem.Title>{item.question}</ListItem.Title>
-             
-            </ListItem.Content>
-            <Icon
-                name='edit-2'
-                type='feather'
+              />
+              <ListItem.Content>
+                <ListItem.Title>{item.question}</ListItem.Title>
+              </ListItem.Content>
+              <Icon
+                name="edit-2"
+                type="feather"
                 onPress={() =>
                   navigation.dispatch(
                     CommonActions.navigate({
@@ -89,8 +89,8 @@ function EditQuestions(props) {
                   )
                 }
               />
-          </ListItem>       
-        </View>
+            </ListItem>
+          </View>
         );
       })}
     </View>
@@ -232,7 +232,7 @@ function SettingsStackScreen(props) {
       {settingCategoriesArr.map((category, index) => {
         // console.log("settings category: ", category);
         return (
-          
+
           <SettingsStack.Screen
             name={category}
             key={index}
@@ -262,35 +262,33 @@ function SettingsStackScreen(props) {
   );
 }
 
+// Settings screen
 const Settings = ({ route, navigation }) => {
   // console.log('Settings: ', route)
   return (
-    <View style={{ flex: 1, alignItems: "center" }}>
+    <View>
       {/* <Text style={styles.header}>Settings</Text> */}
-      <View style={styles.subView}>
+      <View>
         {settingCategoriesArr.map((category, index) => {
           return (
-            <TouchableOpacity key={index} style={styles.button}>
-              <Text
-                style={styles.buttonText}
-                onPress={() =>
-                  navigation.dispatch(
-                    CommonActions.navigate({
-                      name: category,
-                      params: {}
-                    })
-                  )
-                }
-              >
-                {category}
-              </Text>
-              <AntDesign
-                size={20}
-                color="black"
-                style={styles.buttonIcon}
+            <ListItem key={index} bottomDivider
+            onPress={() =>
+                    navigation.dispatch(
+                      CommonActions.navigate({
+                        name: category,
+                        params: {}
+                      })
+                    )
+                  }
+            >
+              <ListItem.Content>
+                <ListItem.Title>{category}</ListItem.Title>
+              </ListItem.Content>
+              <Icon 
                 name="right"
+                type="antdesign"
               />
-            </TouchableOpacity>
+            </ListItem>
           );
         })}
       </View>
