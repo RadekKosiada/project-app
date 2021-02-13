@@ -68,24 +68,23 @@ function EditQuestions(props) {
         );
       })}
 
-      <View style={{ flex: 1, alignSelf: 'center', marginTop: 10}}>
+      <View style={{ flex: 1, alignSelf: "center", marginTop: 10 }}>
         <Icon
           reverse
           name="plus"
           type="antdesign"
           color="white"
           reverseColor="black"
-           onPress={() => console.log("Plus was pressed")}
+          onPress={() => console.log("Plus was pressed")}
         />
-        </View>
-
+      </View>
     </View>
   );
 }
 
 function EditQuestionScreen(props) {
   const navigation = useNavigation();
-  console.log("EditQuestionScreen triggered +++++++", props);
+  console.log("EditQuestionScreen triggered +++++++", props.isNotVisible);
   const answerTypes = props.answerTypeArray;
   return (
     <View
@@ -125,31 +124,31 @@ function EditQuestionScreen(props) {
         style={{ fontSize: 20, borderRadius: 10, backgroundColor: "lightgray" }}
         placeholder="Like a baby"
       ></TextInput>
-
-      <TouchableOpacity 
-        onPress={() =>
-          navigation.dispatch(
-            CommonActions.navigate({
-              name: 'Edit questions',
-              params: {}
-            })
-          )
-        }
-      >
-        <Text
-          style={{
-            fontSize: 20,
-            color: "black",
-            alignSelf: "center",
-            marginTop: 40,
-            borderRadius: 20,
-            backgroundColor: "lightgray",
-            padding: 10
-          }}
+     
+        <TouchableOpacity
+          onPress={() =>
+            navigation.dispatch(
+              CommonActions.navigate({
+                name: "Edit questions",
+                params: {}
+              })
+            )
+          }
         >
-          Save
-        </Text>
-      </TouchableOpacity>
+          <Text
+            style={{
+              fontSize: 20,
+              color: "black",
+              alignSelf: "center",
+              marginTop: 40,
+              borderRadius: 20,
+              backgroundColor: "lightgray",
+              padding: 10
+            }}
+          >
+            Save
+          </Text>
+        </TouchableOpacity>
     </View>
   );
 }
@@ -174,7 +173,7 @@ function SettingScreen({ route }) {
 }
 
 // Root
-const SettingsStack = createStackNavigator()
+const SettingsStack = createStackNavigator();
 
 function SettingsStackScreen(props) {
   const questionsArray = props.questionsArray;
@@ -182,17 +181,13 @@ function SettingsStackScreen(props) {
   const [isNotVisible, setVisible] = useState(true);
   const handleToggle = () => {
     setVisible(!isNotVisible);
-    console.log("isNotVisible", isNotVisible)
-    debugger
+    console.log("isNotVisible", isNotVisible);
   };
-  
+
   console.log("SettingsStackScree*****: ", props.questionsArray);
   return (
     <SettingsStack.Navigator>
-      <SettingsStack.Screen 
-        name="Settings" 
-        component={Settings} 
-      />
+      <SettingsStack.Screen name="Settings" component={Settings} />
 
       {/* Different settings  */}
       {settingCategoriesArr.map((category, index) => {
@@ -212,25 +207,25 @@ function SettingsStackScreen(props) {
       {questionsArray.map((item, index) => {
         let question = item.question;
         return (
-          <SettingsStack.Screen 
-            name={question} 
+          <SettingsStack.Screen
+            name={question}
             key={index}
-            options={{ 
-              headerTitleStyle: { alignSelf: 'center', marginRight: 20 },
-              headerTitle: "Edit Question", 
-
+            initialParams={{ isNotVisible: isNotVisible }}
+            options={{
+              headerTitleStyle: { alignSelf: "center", marginRight: 20 },
+              headerTitle: "Edit Question",
               headerRight: () => (
-                <View style={{flex: 1, flexDirection: "row"}}>
+                <View style={{ flex: 1, flexDirection: "row" }}>
                   <Icon
                     reverse
-                    name={isNotVisible ? 'eye' : 'eye-off' }
+                    name={isNotVisible ? "eye" : "eye-off"}
                     type="feather"
                     color="white"
                     reverseColor="black"
                     onPress={handleToggle}
                   />
                   <Icon
-                  reverse
+                    reverse
                     name="trash"
                     type="feather"
                     color="white"
@@ -238,13 +233,12 @@ function SettingsStackScreen(props) {
                     onPress={() => console.log("Trash was pressed")}
                   />
                 </View>
-
-
               )
             }}
-            >
+          >
             {props => (
               <EditQuestionScreen
+                isNotVisible={isNotVisible}
                 question={question}
                 questionsArray={questionsArray}
                 answerTypeArray={answerTypeArray}
