@@ -178,6 +178,13 @@ const SettingsStack = createStackNavigator()
 function SettingsStackScreen(props) {
   const questionsArray = props.questionsArray;
   const answerTypeArray = props.answerTypeArray;
+  const [isNotVisible, setVisible] = useState(true);
+  const handleToggle = () => {
+    setVisible(!isNotVisible);
+    console.log("isNotVisible", isNotVisible)
+    debugger
+  };
+  
   console.log("SettingsStackScree*****: ", props.questionsArray);
   return (
     <SettingsStack.Navigator>
@@ -215,11 +222,11 @@ function SettingsStackScreen(props) {
                 <View style={{flex: 1, flexDirection: "row"}}>
                   <Icon
                     reverse
-                    name="eye-off"
+                    name={isNotVisible ? 'eye' : 'eye-off' }
                     type="feather"
                     color="white"
                     reverseColor="black"
-                    onPress={() => console.log("Eye was pressed")}
+                    onPress={handleToggle}
                   />
                   <Icon
                   reverse
