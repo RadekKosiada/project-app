@@ -29,24 +29,6 @@ import GoToButton from "./goToButton";
 const questionsData = require("./questions.json");
 const settingCategoriesArr = questionsData.settingsCategories;
 
-// const SettingsButton = props => {
-//   return (
-//     <TouchableOpacity style={styles.button}>
-//       <Text
-//         style={styles.buttonText}
-//       >
-//         {props.text}
-//       </Text>
-//       <AntDesign
-//         size={20}
-//         color="black"
-//         style={styles.buttonIcon}
-//         name="right"
-//       />
-//     </TouchableOpacity>
-//   );
-// };
-
 function ContactUs() {
   return (
     <View>
