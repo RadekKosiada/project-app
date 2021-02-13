@@ -171,8 +171,16 @@ function SettingScreen({ route }) {
     return <DeleteData />;
   }
 }
+
+function CustomHeader (props) {
+  console.log(props)
+  return (
+    <Text>HEADER Settings</Text>
+  )
+}
+
 // Root
-const SettingsStack = createStackNavigator();
+const SettingsStack = createStackNavigator()
 
 function SettingsStackScreen(props) {
   const questionsArray = props.questionsArray;
@@ -180,7 +188,11 @@ function SettingsStackScreen(props) {
   console.log("SettingsStackScree*****: ", props.questionsArray);
   return (
     <SettingsStack.Navigator>
-      <SettingsStack.Screen name="Settings" component={Settings} />
+      <SettingsStack.Screen 
+        name="Settings" 
+        component={Settings} 
+        options={{ headerTitle: props => < CustomHeader {...props } /> }}
+      />
 
       {/* Different settings  */}
       {settingCategoriesArr.map((category, index) => {
