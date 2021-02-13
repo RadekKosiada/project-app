@@ -65,47 +65,32 @@ function EditQuestions(props) {
       {props.questionsArray.map((item, index) => {
         return (
 
-          <View>
+          <View key={index} style={{ marginLeft: 20, marginRight: 20, marginTop: 10  }}>
           
           <ListItem key={index} bottomDivider>
-            
+            <Icon
+                name='drag-handle'
+                type='material-icons'
+                onPress={() => console.log("Drag was pressed")}
+            />
             <ListItem.Content>
               <ListItem.Title>{item.question}</ListItem.Title>
-              {/* <Icon name={} /> */}
+             
             </ListItem.Content>
-            <ListItem.Chevron />
-          </ListItem>
-        
+            <Icon
+                name='edit-2'
+                type='feather'
+                onPress={() =>
+                  navigation.dispatch(
+                    CommonActions.navigate({
+                      name: item.question,
+                      params: { question: item.question }
+                    })
+                  )
+                }
+              />
+          </ListItem>       
         </View>
-        
-          // <View key={index} style={{ flexDirection: "row", marginLeft: 20 }}>
-          //   <View style={{ flexDirection: "row" }}>
-          //     <MaterialIcons
-          //       name="drag-handle"
-          //       size={24}
-          //       color="black"
-          //       style={{ marginTop: 20, alignSelf: "center" }}
-          //       onPress={() => console.log("Drag was pressed")}
-          //     />
-          //     <Text style={styles.text}>{item.question}</Text>
-          //   </View>
-
-          //   <TouchableOpacity style={{ marginTop: 20, alignSelf: "center" }}>
-          //     <Feather
-          //       name="edit-2"
-          //       size={24}
-          //       color="black"
-          //       onPress={() =>
-          //         navigation.dispatch(
-          //           CommonActions.navigate({
-          //             name: item.question,
-          //             params: { question: item.question }
-          //           })
-          //         )
-          //       }
-          //     />
-          //   </TouchableOpacity>
-          // </View>
         );
       })}
     </View>
