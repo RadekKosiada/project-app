@@ -16,10 +16,11 @@ import {
   Image,
   Button,
   TouchableOpacity,
-  Dimensions, Picker
+  Dimensions,
+  Picker
 } from "react-native";
 
-import { ListItem, Icon } from 'react-native-elements';
+import { ListItem, Icon } from "react-native-elements";
 import { AntDesign, Feather, MaterialIcons } from "@expo/vector-icons";
 
 const questionsData = require("./questions.json");
@@ -57,39 +58,54 @@ function ContactUs() {
 }
 
 function EditQuestions(props) {
-  console.log("EditQuestions", props)
+  console.log("EditQuestions", props);
   const navigation = useNavigation();
   return (
     <View>
       {props.questionsArray.map((item, index) => {
         return (
-          <View key={index} style={{ flexDirection: "row", marginLeft: 20 }}>
-            <View style={{ flexDirection: "row" }}>
-              <MaterialIcons
-                name="drag-handle"
-                size={24}
-                color="black"
-                style={{ marginTop: 20, alignSelf: "center" }}
-                onPress={() => console.log("Drag was pressed")}
-              />
-              <Text style={styles.text}>{item.question}</Text>
-            </View>
-            <TouchableOpacity style={{ marginTop: 20, alignSelf: "center" }}>
-              <Feather
-                name="edit-2"
-                size={24}
-                color="black"
-                onPress={() =>
-                  navigation.dispatch(
-                    CommonActions.navigate({
-                      name: item.question,
-                      params: { question: item.question }
-                    })
-                  )
-                }
-              />
-            </TouchableOpacity>
-          </View>
+
+          <View>
+          
+          <ListItem key={index} bottomDivider>
+            
+            <ListItem.Content>
+              <ListItem.Title>{item.question}</ListItem.Title>
+              {/* <Icon name={} /> */}
+            </ListItem.Content>
+            <ListItem.Chevron />
+          </ListItem>
+        
+        </View>
+        
+          // <View key={index} style={{ flexDirection: "row", marginLeft: 20 }}>
+          //   <View style={{ flexDirection: "row" }}>
+          //     <MaterialIcons
+          //       name="drag-handle"
+          //       size={24}
+          //       color="black"
+          //       style={{ marginTop: 20, alignSelf: "center" }}
+          //       onPress={() => console.log("Drag was pressed")}
+          //     />
+          //     <Text style={styles.text}>{item.question}</Text>
+          //   </View>
+
+          //   <TouchableOpacity style={{ marginTop: 20, alignSelf: "center" }}>
+          //     <Feather
+          //       name="edit-2"
+          //       size={24}
+          //       color="black"
+          //       onPress={() =>
+          //         navigation.dispatch(
+          //           CommonActions.navigate({
+          //             name: item.question,
+          //             params: { question: item.question }
+          //           })
+          //         )
+          //       }
+          //     />
+          //   </TouchableOpacity>
+          // </View>
         );
       })}
     </View>
@@ -101,15 +117,20 @@ function EditQuestionScreen(props) {
   const answerTypes = props.answerTypeArray;
   return (
     <View
-      style={{ flex: 1, width: (Dimensions.get("window").width * 8) / 10, margin: 20 }}
+      style={{
+        flex: 1,
+        width: (Dimensions.get("window").width * 8) / 10,
+        margin: 20
+      }}
     >
-
       {/* HEADER */}
-      <View style={{flexDirection: "row", alignItems: "center"}}>
-        <TouchableOpacity style={{ }}>
+      <View style={{ flexDirection: "row", alignItems: "center" }}>
+        <TouchableOpacity style={{}}>
           <Text style={{ color: "black" }}>Cancel</Text>
         </TouchableOpacity>
-        <Text style={{ fontWeight: "900", fontSize: 20, color: "black" }}>Edit Question</Text>
+        <Text style={{ fontWeight: "900", fontSize: 20, color: "black" }}>
+          Edit Question
+        </Text>
       </View>
       {/* EDITING PART */}
       <Text style={{ fontSize: 20, color: "black" }}>Question</Text>
@@ -123,14 +144,11 @@ function EditQuestionScreen(props) {
       </Text>
 
       <View style={styles.picker}>
-      <Picker >
-          {answerTypes.map((type, index) => 
-            <Picker.Item 
-            key={index}
-            value ={type} 
-            label={type} 
-          />)}
-      </Picker>
+        <Picker>
+          {answerTypes.map((type, index) => (
+            <Picker.Item key={index} value={type} label={type} />
+          ))}
+        </Picker>
       </View>
 
       <Text style={{ fontSize: 20, color: "black" }}>Where 1 is</Text>
@@ -144,7 +162,7 @@ function EditQuestionScreen(props) {
         style={{ fontSize: 20, borderRadius: 10, backgroundColor: "lightgray" }}
         placeholder="Like a baby"
       ></TextInput>
-      
+
       <TouchableOpacity>
         <Text
           style={{
@@ -155,8 +173,6 @@ function EditQuestionScreen(props) {
             borderRadius: 20,
             backgroundColor: "lightgray",
             padding: 10
-
-
           }}
         >
           Save
@@ -222,7 +238,7 @@ const SettingsStack = createStackNavigator();
 function SettingsStackScreen(props) {
   const questionsArray = props.questionsArray;
   const answerTypeArray = props.answerTypeArray;
-  console.log("SettingsStackScreen: ", props.questionsArray);
+  console.log("SettingsStackScree*****: ", props.questionsArray);
   return (
     <SettingsStack.Navigator>
       <SettingsStack.Screen name="Settings" component={Settings} />
@@ -231,6 +247,7 @@ function SettingsStackScreen(props) {
       {settingCategoriesArr.map((category, index) => {
         // console.log("settings category: ", category);
         return (
+          
           <SettingsStack.Screen
             name={category}
             key={index}
@@ -331,9 +348,9 @@ const styles = StyleSheet.create({
     margin: 3
   },
   picker: {
-    fontSize: 20, 
-    borderRadius: 10, 
-    backgroundColor: "lightgray",
+    fontSize: 20,
+    borderRadius: 10,
+    backgroundColor: "lightgray"
     // height: 200,
     // width: "80%",
     // backgroundColor: "white"
