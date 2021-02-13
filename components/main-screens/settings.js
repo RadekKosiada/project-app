@@ -191,7 +191,7 @@ function SettingsStackScreen(props) {
       <SettingsStack.Screen 
         name="Settings" 
         component={Settings} 
-        options={{ headerTitle: props => < CustomHeader {...props } /> }}
+        options={{ headerTitle: props => < CustomHeader stringTest="asbdfgh" /> }}
       />
 
       {/* Different settings  */}
