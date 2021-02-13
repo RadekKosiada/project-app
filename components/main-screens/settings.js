@@ -25,22 +25,10 @@ import { AntDesign, Feather, MaterialIcons } from "@expo/vector-icons";
 
 // Button
 import GoToButton from "./goToButton";
+import ContactUs from "./contactUs";
 
 const questionsData = require("./questions.json");
 const settingCategoriesArr = questionsData.settingsCategories;
-
-function ContactUs() {
-  return (
-    <View>
-      <Text>We are a small, non profit team working... </Text>
-      <Text>Do you have any questions?</Text>
-      <Text>Subject: </Text>
-      <TextInput></TextInput>
-      <Text>Message: </Text>
-      <TextInput></TextInput>
-    </View>
-  );
-}
 
 function EditQuestions(props) {
   console.log("EditQuestions", props);
