@@ -172,24 +172,6 @@ function SettingScreen({ route }) {
   }
 }
 
-function CustomHeader (props) {
-  console.log(props)
-  return (
-    <View style={{flex: 1, flexDirection: "row"}}>
-    <Text>Edit Question</Text>
-    {/* <Icon
-          alignSelf="flex-end"
-          reverse
-          name="plus"
-          type="antdesign"
-          color="white"
-          reverseColor="black"
-           onPress={() => console.log("Plus was pressed")}
-        /> */}
-    </View>
-  )
-}
-
 // Root
 const SettingsStack = createStackNavigator()
 
@@ -226,7 +208,7 @@ function SettingsStackScreen(props) {
             name={question} 
             key={index}
             options={{ 
-              headerTitle: props => < CustomHeader stringTest="asbdfg" />, 
+              headerTitle: "Edit Question", 
               headerRight: () => (
                 < Button
                   onPress = {() => alert('This is clicked')}
