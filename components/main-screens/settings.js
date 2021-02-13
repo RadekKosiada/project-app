@@ -175,7 +175,18 @@ function SettingScreen({ route }) {
 function CustomHeader (props) {
   console.log(props)
   return (
-    <Text>HEADER Settings</Text>
+    <View style={{flex: 1, flexDirection: "row"}}>
+    <Text>Edit Question</Text>
+    {/* <Icon
+          alignSelf="flex-end"
+          reverse
+          name="plus"
+          type="antdesign"
+          color="white"
+          reverseColor="black"
+           onPress={() => console.log("Plus was pressed")}
+        /> */}
+    </View>
   )
 }
 
@@ -191,7 +202,6 @@ function SettingsStackScreen(props) {
       <SettingsStack.Screen 
         name="Settings" 
         component={Settings} 
-        options={{ headerTitle: props => < CustomHeader stringTest="asbdfgh" /> }}
       />
 
       {/* Different settings  */}
@@ -212,7 +222,11 @@ function SettingsStackScreen(props) {
       {questionsArray.map((item, index) => {
         let question = item.question;
         return (
-          <SettingsStack.Screen name={question} key={index}>
+          <SettingsStack.Screen 
+            name={question} 
+            key={index}
+            options={{ headerTitle: props => < CustomHeader stringTest="asbdfgh" /> }}
+            >
             {props => (
               <EditQuestionScreen
                 question={question}
