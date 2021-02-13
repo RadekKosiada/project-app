@@ -23,6 +23,9 @@ import {
 import { ListItem, Icon } from "react-native-elements";
 import { AntDesign, Feather, MaterialIcons } from "@expo/vector-icons";
 
+// Button
+import GoToButton from "./goToButton";
+
 const questionsData = require("./questions.json");
 const settingCategoriesArr = questionsData.settingsCategories;
 
@@ -93,6 +96,18 @@ function EditQuestions(props) {
           </View>
         );
       })}
+
+      <View style={{ flex: 1, alignSelf: 'center', marginTop: 10}}>
+        <Icon
+          reverse
+          name="plus"
+          type="antdesign"
+          color="white"
+          reverseColor="black"
+           onPress={() => console.log("Plus was pressed")}
+        />
+        </View>
+
     </View>
   );
 }
