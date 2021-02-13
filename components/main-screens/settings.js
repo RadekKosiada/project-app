@@ -225,7 +225,17 @@ function SettingsStackScreen(props) {
           <SettingsStack.Screen 
             name={question} 
             key={index}
-            options={{ headerTitle: props => < CustomHeader stringTest="asbdfgh" /> }}
+            options={{ 
+              headerTitle: props => < CustomHeader stringTest="asbdfg" />, 
+              headerRight: () => (
+                < Button
+                  onPress = {() => alert('This is clicked')}
+                title="Info"
+                color="black"
+                />
+
+              )
+            }}
             >
             {props => (
               <EditQuestionScreen
