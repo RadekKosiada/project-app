@@ -91,80 +91,103 @@ function EditQuestionScreen(props) {
     <View
       style={{
         flex: 1,
-        width: (Dimensions.get("window").width * 8) / 10,
-        margin: 20
+        // width: (Dimensions.get("window").width * 8) / 10,
+        // margin: 20
       }}
     >
-      {props.isNotVisible ? null :
-      <View style={{
-        flex: 1,
-      height: '0%',
-      width: '100%',
-      justifyContent: 'center',
-      alignItems: 'center',
-      backgroundColor: 'black',
-      opacity: 0.3,
-      zIndex: 10
-      }}> 
-      </View>}
-     
+      {/* OVERLAY */}
+      {props.isNotVisible ? null : (
+        <View
+          style={{
+            flex: 1,
+            height: "100%",
+            width: "100%",
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "black",
+            opacity: 0.3,
+            zIndex: 10
+          }}
+        ></View>
+      )}
 
-      
-      {/* EDITING PART */}
-      <Text style={{ fontSize: 20, color: "black" }}>Question</Text>
-      <TextInput
-        style={{ fontSize: 20, borderRadius: 10, backgroundColor: "lightgray" }}
-        placeholder={props.question}
-      ></TextInput>
-
-      <Text style={{ fontSize: 20, marginTop: 40, color: "black" }}>
-        Answer Type
-      </Text>
-
-      <View style={styles.picker}>
-        <Picker>
-          {answerTypes.map((type, index) => (
-            <Picker.Item key={index} value={type} label={type} />
-          ))}
-        </Picker>
-      </View>
-
-      <Text style={{ fontSize: 20, color: "black" }}>Where 1 is</Text>
-      <TextInput
-        style={{ fontSize: 20, borderRadius: 10, backgroundColor: "lightgray" }}
-        placeholder="Tossing and turning"
-      ></TextInput>
-
-      <Text style={{ fontSize: 20, color: "black" }}>... and 5 is</Text>
-      <TextInput
-        style={{ fontSize: 20, borderRadius: 10, backgroundColor: "lightgray" }}
-        placeholder="Like a baby"
-      ></TextInput>
-     
-        <TouchableOpacity
-          onPress={() =>
-            navigation.dispatch(
-              CommonActions.navigate({
-                name: "Edit questions",
-                params: {}
-              })
-            )
-          }
+      {props.isNotVisible ? (
+        <View
+          style={{
+            flex: 1,
+            width: (Dimensions.get("window").width * 8) / 10,
+            margin: 20
+          }}
         >
-          <Text
+          {/* EDITING PART */}
+          <Text style={{ fontSize: 20, color: "black" }}>Question</Text>
+          <TextInput
             style={{
               fontSize: 20,
-              color: "black",
-              alignSelf: "center",
-              marginTop: 40,
-              borderRadius: 20,
-              backgroundColor: "lightgray",
-              padding: 10
+              borderRadius: 10,
+              backgroundColor: "lightgray"
             }}
-          >
-            Save
+            placeholder={props.question}
+          ></TextInput>
+
+          <Text style={{ fontSize: 20, marginTop: 40, color: "black" }}>
+            Answer Type
           </Text>
-        </TouchableOpacity>
+
+          <View style={styles.picker}>
+            <Picker>
+              {answerTypes.map((type, index) => (
+                <Picker.Item key={index} value={type} label={type} />
+              ))}
+            </Picker>
+          </View>
+
+          <Text style={{ fontSize: 20, color: "black" }}>Where 1 is</Text>
+          <TextInput
+            style={{
+              fontSize: 20,
+              borderRadius: 10,
+              backgroundColor: "lightgray"
+            }}
+            placeholder="Tossing and turning"
+          ></TextInput>
+
+          <Text style={{ fontSize: 20, color: "black" }}>... and 5 is</Text>
+          <TextInput
+            style={{
+              fontSize: 20,
+              borderRadius: 10,
+              backgroundColor: "lightgray"
+            }}
+            placeholder="Like a baby"
+          ></TextInput>
+        </View>
+      ) : null}
+
+      <TouchableOpacity
+        onPress={() =>
+          navigation.dispatch(
+            CommonActions.navigate({
+              name: "Edit questions",
+              params: {}
+            })
+          )
+        }
+      >
+        <Text
+          style={{
+            fontSize: 20,
+            color: "black",
+            alignSelf: "center",
+            marginTop: 40,
+            borderRadius: 20,
+            backgroundColor: "lightgray",
+            padding: 10
+          }}
+        >
+          Save
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
