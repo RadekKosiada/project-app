@@ -86,6 +86,7 @@ function EditQuestionScreen(props) {
   const navigation = useNavigation();
   console.log("EditQuestionScreen triggered +++++++", props.isNotVisible);
   const answerTypes = props.answerTypeArray;
+
   return (
     <View
       style={{
@@ -94,6 +95,21 @@ function EditQuestionScreen(props) {
         margin: 20
       }}
     >
+      {props.isNotVisible ? null :
+      <View style={{
+        flex: 1,
+      height: '0%',
+      width: '100%',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: 'black',
+      opacity: 0.3,
+      zIndex: 10
+      }}> 
+      </View>}
+     
+
+      
       {/* EDITING PART */}
       <Text style={{ fontSize: 20, color: "black" }}>Question</Text>
       <TextInput
