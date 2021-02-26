@@ -91,73 +91,93 @@ function EditQuestionScreen(props) {
     <View
       style={{
         flex: 1,
-        alignSelf: 'center',
+        alignSelf: "center",
         width: (Dimensions.get("window").width * 9) / 10,
         marginTop: 20
       }}
-    >   
-
+    >
       {/* OVERLAY */}
       {props.isNotVisible ? (
         <View
           style={{
             flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-            position: 'absolute',
-            left: -20,
+            alignItems: "center",
+            justifyContent: "center",
+            position: "absolute",
+            left: -30,
             top: -20,
-            width: '120%',
-            height: '120%',
-            backgroundColor: "black",
-            opacity: 0.3,
+            width: "120%",
+            height: "120%",
+            backgroundColor: "white",
+            opacity: 0.7,
             zIndex: 2
           }}
-        ></View>
+        >
+          <View
+            style={{
+              position: "absolute",
+              top: 180,
+              flex: 1,
+              alignContent: 'flex-start',
+            }}
+          >
+            <Icon
+              name={props.isNotVisible ? "eye-off" : "eye"}
+              type="feather"
+              color="black"
+              size={60}
+            />
+            <Text 
+            style={{
+              color: 'black',
+              fontSize: 25
+              }}>Question hidden</Text>
+          </View>
+        </View>
       ) : null}
 
-          {/* EDITING PART */}
-          <Text style={{ fontSize: 20, color: "black" }}>Question</Text>
-          <TextInput
-            style={{
-              fontSize: 20,
-              borderRadius: 10,
-              backgroundColor: "lightgray"
-            }}
-            placeholder={props.question}
-          ></TextInput>
+      {/* EDITING PART */}
+      <Text style={{ fontSize: 20, color: "black" }}>Question</Text>
+      <TextInput
+        style={{
+          fontSize: 20,
+          borderRadius: 10,
+          backgroundColor: "lightgray"
+        }}
+        placeholder={props.question}
+      ></TextInput>
 
-          <Text style={{ fontSize: 20, marginTop: 40, color: "black" }}>
-            Answer Type
-          </Text>
+      <Text style={{ fontSize: 20, marginTop: 40, color: "black" }}>
+        Answer Type
+      </Text>
 
-          <View style={styles.picker}>
-            <Picker>
-              {answerTypes.map((type, index) => (
-                <Picker.Item key={index} value={type} label={type} />
-              ))}
-            </Picker>
-          </View>
+      <View style={styles.picker}>
+        <Picker>
+          {answerTypes.map((type, index) => (
+            <Picker.Item key={index} value={type} label={type} />
+          ))}
+        </Picker>
+      </View>
 
-          <Text style={{ fontSize: 20, color: "black" }}>Where 1 is</Text>
-          <TextInput
-            style={{
-              fontSize: 20,
-              borderRadius: 10,
-              backgroundColor: "lightgray"
-            }}
-            placeholder="Tossing and turning"
-          ></TextInput>
+      <Text style={{ fontSize: 20, color: "black" }}>Where 1 is</Text>
+      <TextInput
+        style={{
+          fontSize: 20,
+          borderRadius: 10,
+          backgroundColor: "lightgray"
+        }}
+        placeholder="Tossing and turning"
+      ></TextInput>
 
-          <Text style={{ fontSize: 20, color: "black" }}>... and 5 is</Text>
-          <TextInput
-            style={{
-              fontSize: 20,
-              borderRadius: 10,
-              backgroundColor: "lightgray"
-            }}
-            placeholder="Like a baby"
-          ></TextInput>
+      <Text style={{ fontSize: 20, color: "black" }}>... and 5 is</Text>
+      <TextInput
+        style={{
+          fontSize: 20,
+          borderRadius: 10,
+          backgroundColor: "lightgray"
+        }}
+        placeholder="Like a baby"
+      ></TextInput>
 
       <TouchableOpacity
         onPress={() =>
