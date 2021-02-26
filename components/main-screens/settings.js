@@ -266,6 +266,8 @@ function SettingsStackScreen(props) {
       Another way to nest component in a stack screen */}
       {questionsArray.map((item, index) => {
         let question = item.question;
+        let questionVisible = item.visible;
+        let isNotVisible = !questionVisible;
         return (
           <SettingsStack.Screen
             name={question}
@@ -278,7 +280,8 @@ function SettingsStackScreen(props) {
                 <View style={{ flex: 1, flexDirection: "row" }}>
                   <Icon
                     reverse
-                    name={isNotVisible ? "eye" : "eye-off"}
+                    // if visible than black; if NOT visible than red;
+                    name={questionVisible ? "eye-off" : "eye"}
                     type="feather"
                     color="white"
                     reverseColor="black"
