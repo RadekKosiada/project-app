@@ -91,34 +91,31 @@ function EditQuestionScreen(props) {
     <View
       style={{
         flex: 1,
-        // width: (Dimensions.get("window").width * 8) / 10,
-        // margin: 20
+        alignSelf: 'center',
+        width: (Dimensions.get("window").width * 9) / 10,
+        marginTop: 20
       }}
-    >
+    >   
+
       {/* OVERLAY */}
       {props.isNotVisible ? null : (
         <View
           style={{
             flex: 1,
-            height: "100%",
-            width: "100%",
-            justifyContent: "center",
-            alignItems: "center",
+            alignItems: 'center',
+            justifyContent: 'center',
+            position: 'absolute',
+            left: -20,
+            top: -20,
+            width: '120%',
+            height: '120%',
             backgroundColor: "black",
             opacity: 0.3,
-            zIndex: 10
+            zIndex: 2
           }}
         ></View>
       )}
 
-      {props.isNotVisible ? (
-        <View
-          style={{
-            flex: 1,
-            width: (Dimensions.get("window").width * 8) / 10,
-            margin: 20
-          }}
-        >
           {/* EDITING PART */}
           <Text style={{ fontSize: 20, color: "black" }}>Question</Text>
           <TextInput
@@ -161,8 +158,6 @@ function EditQuestionScreen(props) {
             }}
             placeholder="Like a baby"
           ></TextInput>
-        </View>
-      ) : null}
 
       <TouchableOpacity
         onPress={() =>
@@ -173,6 +168,9 @@ function EditQuestionScreen(props) {
             })
           )
         }
+        style={{
+          zIndex: 3
+        }}
       >
         <Text
           style={{
