@@ -3,7 +3,7 @@
     {
       "question":  "How did you sleep last night?",
       "possible answer": "scale",
-      "visible": true
+      "visible": false
     },
     {
       "question": "How do you feel today?",
