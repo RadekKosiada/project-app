@@ -118,7 +118,7 @@ function EditQuestionScreen(props) {
               position: "absolute",
               top: 180,
               flex: 1,
-              alignContent: 'flex-start',
+              alignContent: "flex-start"
             }}
           >
             <Icon
@@ -127,11 +127,14 @@ function EditQuestionScreen(props) {
               color="black"
               size={60}
             />
-            <Text 
-            style={{
-              color: 'black',
-              fontSize: 25
-              }}>Question hidden</Text>
+            <Text
+              style={{
+                color: "black",
+                fontSize: 25
+              }}
+            >
+              Question hidden
+            </Text>
           </View>
         </View>
       ) : null}
