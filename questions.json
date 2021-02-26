@@ -2,27 +2,33 @@
   "questions": [
     {
       "question":  "How did you sleep last night?",
-      "possible answer": "scale"
+      "possible answer": "scale",
+      "visible": true
     },
     {
       "question": "How do you feel today?",
-      "possible answer": "scale"
+      "possible answer": "scale",
+      "visible": true
     },
     {
       "question": "What did you do today?",
-      "possible answer": "tags"
+      "possible answer": "tags",
+      "visible": true
     },
     {
       "question": "Did you observe your boundaries?",
-      "possible answer": "single choice"
+      "possible answer": "single choice",
+      "visible": true
     },
     {
       "question": "What did you do for your self care?",
-      "possible answer": "tags"
+      "possible answer": "tags",
+      "visible": true
     },
     {
       "question": "What will you do tomorrow?",
-      "possible answer": "open"
+      "possible answer": "open",
+      "visible": true
     }
   ],
   "possible answers": 
