@@ -98,7 +98,7 @@ function EditQuestionScreen(props) {
     >   
 
       {/* OVERLAY */}
-      {props.isNotVisible ? null : (
+      {props.isNotVisible ? (
         <View
           style={{
             flex: 1,
@@ -114,7 +114,7 @@ function EditQuestionScreen(props) {
             zIndex: 2
           }}
         ></View>
-      )}
+      ) : null}
 
           {/* EDITING PART */}
           <Text style={{ fontSize: 20, color: "black" }}>Question</Text>
