@@ -1,5 +1,10 @@
 import React from "react";
 import {
+  NavigationContainer,
+  CommonActions,
+  useNavigation
+} from "@react-navigation/native";
+import {
   Text,
   View,
   TouchableOpacity,
@@ -8,6 +13,7 @@ import {
 } from "react-native";
 
 function AddQuestionScreen({ route }) {
+  const navigation = useNavigation();
   console.log(route.params);
   const answerTypes = route.params.answerTypeArray;
   return (
@@ -54,6 +60,34 @@ function AddQuestionScreen({ route }) {
         )})}
         </View>
       </View>
+      {/* This can be actually a component as it's identical as in EditQuestionScreen */}
+      <TouchableOpacity
+        onPress={() =>
+          navigation.dispatch(
+            CommonActions.navigate({
+              name: "Edit questions",
+              params: {}
+            })
+          )
+        }
+        style={{
+          zIndex: 3
+        }}
+      >
+        <Text
+          style={{
+            fontSize: 20,
+            color: "black",
+            alignSelf: "center",
+            marginTop: 40,
+            borderRadius: 20,
+            backgroundColor: "lightgray",
+            padding: 10
+          }}
+        >
+          Save
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
