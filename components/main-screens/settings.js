@@ -80,7 +80,8 @@ function EditQuestions(props) {
             navigation.dispatch(
               CommonActions.navigate({
                 name: "Add a Question",
-                params: { testAddQuestion: "1234" }
+                params: { testAddQuestion: "1234",
+                answerTypeArray: props.answerTypeArray }
               })
             )
           }
@@ -229,10 +230,14 @@ function CalendarPreferences() {
 function SettingScreen({ route }) {
   console.log("SettingScreen !!!!!!!!: ", route.params);
   const questionsArray = route.params.questionsArray;
+  const answerTypeArray = route.params.answerTypeArray;
   if (route.name === "Contact us") {
     return <ContactUs />;
   } else if (route.name === "Edit questions") {
-    return <EditQuestions questionsArray={questionsArray} />;
+    return <EditQuestions 
+    questionsArray={questionsArray} 
+    answerTypeArray={answerTypeArray}
+    />;
   } else if (route.name === "Calendar preferences") {
     return <CalendarPreferences />;
   } else if (route.name === "Delete data") {
@@ -266,7 +271,10 @@ function SettingsStackScreen(props) {
             key={index}
             component={SettingScreen}
             // https://stackoverflow.com/a/60700220
-            initialParams={{ questionsArray: questionsArray }}
+            initialParams={{ 
+              questionsArray: questionsArray,
+              answerTypeArray: answerTypeArray
+             }}
           />
         );
       })}
