@@ -7,7 +7,7 @@ import {
   TextInput
 } from "react-native";
 
-function AddQuestion() {
+function AddQuestionScreen({route}) {
   return (
     <View>
       <Text style={{ fontSize: 22, color: "black" }}>Delete all my data: </Text>
@@ -23,4 +23,4 @@ function AddQuestion() {
   );
 }
 
-export default AddQuestion;
+export default AddQuestionScreen;

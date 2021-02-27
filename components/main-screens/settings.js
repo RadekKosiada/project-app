@@ -27,6 +27,7 @@ import { AntDesign, Feather, MaterialIcons } from "@expo/vector-icons";
 import GoToButton from "./goToButton";
 import ContactUs from "./contactUs";
 import DeleteData from "./deleteData";
+import AddQuestionScreen from "./addQuestion";
 
 const questionsData = require("./questions.json");
 const settingCategoriesArr = questionsData.settingsCategories;
@@ -75,7 +76,14 @@ function EditQuestions(props) {
           type="antdesign"
           color="white"
           reverseColor="black"
-          onPress={() => console.log("Plus was pressed")}
+          onPress={() =>
+            navigation.dispatch(
+              CommonActions.navigate({
+                name: "Add a Question",
+                params: { testAddQuestion: "1234" }
+              })
+            )
+          }
         />
       </View>
     </View>
@@ -310,6 +318,7 @@ function SettingsStackScreen(props) {
           </SettingsStack.Screen>
         );
       })}
+      <SettingsStack.Screen name={"Add a Question"} component={AddQuestionScreen} />
     </SettingsStack.Navigator>
   );
 }
