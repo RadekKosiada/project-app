@@ -12,3 +12,18 @@ swipe between screens
 
  how to hide navigation tab like Settings and stuff
  https://reactnavigation.org/docs/hiding-tabbar-in-screens/
+
+ can you hide the actual header
+
+ the eye should be open/close for particular question not all;
+
+ make order with the question.files!!!!
+
+ note on paper what data structure I need
+ questions => all properties => delete, hide, edit;
+ answers => would need to have the same id as question? relatable?
+  question id, type, answer
+
+users => data: name etc., week starts on
+
+FIX picker probably from https://github.com/react-native-picker/picker
