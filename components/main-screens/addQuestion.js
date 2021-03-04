@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   NavigationContainer,
   CommonActions,
@@ -16,6 +16,9 @@ function AddQuestionScreen({ route }) {
   const navigation = useNavigation();
   console.log(route.params);
   const answerTypes = route.params.answerTypeArray;
+
+  const [question, setQuestion] = useState("");
+
   return (
     <View
       style={{
@@ -35,6 +38,8 @@ function AddQuestionScreen({ route }) {
         <Text style={{ fontSize: 18, color: "black" }}>Question</Text>
         <TextInput
           placeholder="Add a new question..."
+          defaultValue={question}
+          onChangeText={question => setQuestion(question)}
           style={{
             backgroundColor: "lightgray",
             borderRadius: 7,
@@ -52,24 +57,22 @@ function AddQuestionScreen({ route }) {
             backgroundColor: "lightgray"
           }}
         >
-           {answerTypes.map((type, index) => {
-        return (
-          <Text key={index}>
-            {type}
-          </Text>
-        )})}
+          {answerTypes.map((type, index) => {
+            return <Text key={index}>{type}</Text>;
+          })}
         </View>
       </View>
       {/* This can be actually a component as it's identical as in EditQuestionScreen */}
       <TouchableOpacity
-        onPress={() =>
+        onPress={() => {
+          console.log("question", question);
           navigation.dispatch(
             CommonActions.navigate({
               name: "Edit questions",
               params: {}
             })
-          )
-        }
+          );
+        }}
         style={{
           zIndex: 3
         }}
