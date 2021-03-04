@@ -33,11 +33,13 @@ const questionsData = require("./questions.json");
 const settingCategoriesArr = questionsData.settingsCategories;
 
 function EditQuestions(props) {
-  console.log("EditQuestions", props);
+  console.log("EditQuestions", props.newQuestion);
   const navigation = useNavigation();
+  const allQuestions = props.questionsArray;
+  props.newQuestion ? allQuestions.push(props.newQuestion) : null;
   return (
     <View>
-      {props.questionsArray.map((item, index) => {
+      {allQuestions.map((item, index) => {
         return (
           <View
             key={index}
@@ -93,7 +95,7 @@ function EditQuestions(props) {
 
 function EditQuestionScreen(props) {
   const navigation = useNavigation();
-  console.log("EditQuestionScreen triggered +++++++", props.isNotVisible);
+  console.log("EditQuestionScreen triggered +++++++", props.newQuestion);
   const answerTypes = props.answerTypeArray;
 
   return (
@@ -231,12 +233,14 @@ function SettingScreen({ route }) {
   console.log("SettingScreen !!!!!!!!: ", route.params);
   const questionsArray = route.params.questionsArray;
   const answerTypeArray = route.params.answerTypeArray;
+  const newQuestion = route.params.newQuestion;
   if (route.name === "Contact us") {
     return <ContactUs />;
   } else if (route.name === "Edit questions") {
     return <EditQuestions 
     questionsArray={questionsArray} 
     answerTypeArray={answerTypeArray}
+    newQuestion={newQuestion}
     />;
   } else if (route.name === "Calendar preferences") {
     return <CalendarPreferences />;

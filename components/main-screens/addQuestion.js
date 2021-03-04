@@ -69,7 +69,7 @@ function AddQuestionScreen({ route }) {
           navigation.dispatch(
             CommonActions.navigate({
               name: "Edit questions",
-              params: {}
+              params: {newQuestion: {"possible answer": "scale", "question": question, "visible": true}}
             })
           );
         }}
