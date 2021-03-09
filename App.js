@@ -1,17 +1,21 @@
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import store from "./components/main-screens/store/index";
+import { Provider } from "react-redux";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
-import {
-  StyleSheet
-} from "react-native";
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { StyleSheet } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 // https://reactnavigation.org/docs/tab-based-navigation/
-import { Entypo,  MaterialIcons, FontAwesome, Ionicons   } from '@expo/vector-icons'; 
-
+import {
+  Entypo,
+  MaterialIcons,
+  FontAwesome,
+  Ionicons
+} from "@expo/vector-icons";
 
 // main screens
 import HomeStackScreen from "./components/main-screens/home";
@@ -52,43 +56,51 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <SafeAreaProvider>
-    <NavigationContainer>
-       <Tab.Navigator
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
+    <Provider store={store}>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <Tab.Navigator
+            screenOptions={({ route }) => ({
+              tabBarIcon: ({ focused, color, size }) => {
+                let iconName;
 
-            if (route.name === 'Home') {
-              return <Entypo name='home' size={size} color={color}  />;
-
-            } else if (route.name === 'Settings') {
-              return <MaterialIcons name="settings" size={size} color={color} />
-            } else if (route.name === 'Calendar') {
-              return <FontAwesome name="calendar" size={size} color={color} />
-            } else if (route.name === "Stats") {
-              return <Ionicons name="md-stats" size={24} color={color} />
-            }            
-          },
-        })}
-        tabBarOptions={{
-          activeTintColor: 'blue',
-          inactiveTintColor: 'gray',
-        }}
-      >
-     
-      <Tab.Screen name="Home" component={HomeStackScreen} />
-        <Tab.Screen name="Calendar" component={Calendar} />
-        <Tab.Screen name="Stats" component={Stats} />
-        {/* https://reactnavigation.org/docs/hello-react-navigation/#passing-additional-props */}
-        <Tab.Screen name="Settings">
-          {props => <SettingsStackScreen {...props} questionsArray={questionsArray} 
-          answerTypeArray={answerTypeArray}
-          />}
-          </Tab.Screen>
-      </Tab.Navigator>
-    </NavigationContainer>
-    </SafeAreaProvider>
+                if (route.name === "Home") {
+                  return <Entypo name="home" size={size} color={color} />;
+                } else if (route.name === "Settings") {
+                  return (
+                    <MaterialIcons name="settings" size={size} color={color} />
+                  );
+                } else if (route.name === "Calendar") {
+                  return (
+                    <FontAwesome name="calendar" size={size} color={color} />
+                  );
+                } else if (route.name === "Stats") {
+                  return <Ionicons name="md-stats" size={24} color={color} />;
+                }
+              }
+            })}
+            tabBarOptions={{
+              activeTintColor: "blue",
+              inactiveTintColor: "gray"
+            }}
+          >
+            <Tab.Screen name="Home" component={HomeStackScreen} />
+            <Tab.Screen name="Calendar" component={Calendar} />
+            <Tab.Screen name="Stats" component={Stats} />
+            {/* https://reactnavigation.org/docs/hello-react-navigation/#passing-additional-props */}
+            <Tab.Screen name="Settings">
+              {props => (
+                <SettingsStackScreen
+                  {...props}
+                  questionsArray={questionsArray}
+                  answerTypeArray={answerTypeArray}
+                />
+              )}
+            </Tab.Screen>
+          </Tab.Navigator>
+        </NavigationContainer>
+      </SafeAreaProvider>
+    </Provider>
   );
 }
 
