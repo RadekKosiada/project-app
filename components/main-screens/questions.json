@@ -1,31 +1,37 @@
 {
   "questions": [
     {
+      "id": 0,
       "question":  "How did you sleep last night?",
       "possible answer": "scale",
       "visible": false
     },
     {
+      "id": 1,
       "question": "How do you feel today?",
       "possible answer": "scale",
       "visible": true
     },
     {
+      "id": 2,
       "question": "What did you do today?",
       "possible answer": "tags",
       "visible": true
     },
     {
+      "id": 3,
       "question": "Did you observe your boundaries?",
       "possible answer": "single choice",
       "visible": true
     },
     {
+      "id": 4,
       "question": "What did you do for your self care?",
       "possible answer": "tags",
       "visible": true
     },
     {
+      "id": 5,
       "question": "What will you do tomorrow?",
       "possible answer": "open",
       "visible": true
