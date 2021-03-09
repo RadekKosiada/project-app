@@ -33,7 +33,7 @@ const questionsData = require("./questions.json");
 const settingCategoriesArr = questionsData.settingsCategories;
 
 function EditQuestions(props) {
-  console.log("EditQuestions", props.newQuestion);
+  console.log("EditQuestions", props.questionsArray);
   const navigation = useNavigation();
   const allQuestions = props.questionsArray;
   props.newQuestion ? allQuestions.push(props.newQuestion) : null;
@@ -42,7 +42,7 @@ function EditQuestions(props) {
       {allQuestions.map((item, index) => {
         return (
           <View
-            key={index}
+            key={item.id}
             style={{ marginLeft: 20, marginRight: 20, marginTop: 10 }}
           >
             <ListItem key={index} bottomDivider>
