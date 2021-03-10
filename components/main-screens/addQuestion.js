@@ -11,6 +11,8 @@ import {
   Dimensions,
   TextInput
 } from "react-native";
+import { useDispatch } from "react-redux";
+import { addQuestion } from "./actions/questions";
 
 function AddQuestionScreen({ route }) {
   const navigation = useNavigation();
@@ -18,6 +20,10 @@ function AddQuestionScreen({ route }) {
   const answerTypes = route.params.answerTypeArray;
 
   const [question, setQuestion] = useState("");
+
+  const dispatch = useDispatch();
+
+  const submitQuestion = (question) => dispatch(addQuestion(question));
 
   return (
     <View
@@ -69,9 +75,10 @@ function AddQuestionScreen({ route }) {
           navigation.dispatch(
             CommonActions.navigate({
               name: "Edit questions",
-              params: {newQuestion: {"possible answer": "scale", "question": question, "visible": true}}
+              // params: {newQuestion: {"possible answer": "scale", "question": question, "visible": true}}
             })
           );
+          submitQuestion(question);
         }}
         style={{
           zIndex: 3
@@ -95,4 +102,21 @@ function AddQuestionScreen({ route }) {
   );
 }
 
+const mapStateToProps = state => {
+  console.log('mapStateToProps', state);
+  return {
+    questions: state.questionReducer.questionsList
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  console.log('mapDispatchToProps', state);
+  return {
+    add: (question) => dispatch(addQuestion(question))
+  };
+};
+
+// export default connect(mapStateToProps, mapDispatchToProps)(AddQuestionScreen);
+
 export default AddQuestionScreen;
+
