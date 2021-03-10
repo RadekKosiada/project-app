@@ -13,12 +13,14 @@ const questionReducer = (state = initialState, action) => {
         ...state,
         // concat as it returns a new array,
         // whereras push add to the current array
-        questionsList: stat.questionsList.concat({
-          id: Math.random(),
-          question: action.data
+        questionsList: state.questionsList.concat({
+          id: 99,
+          'possible answer': 'scale',
+          question: action.data,
+          visible: true
         })
       };
-      return;
+      
     case DELETE_QUESTION:
       return {
         ...state,
