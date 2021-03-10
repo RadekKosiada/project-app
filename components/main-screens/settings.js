@@ -20,6 +20,9 @@ import {
   Picker
 } from "react-native";
 
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteQuestion } from "./actions/questions";
+
 import { ListItem, Icon } from "react-native-elements";
 import { AntDesign, Feather, MaterialIcons } from "@expo/vector-icons";
 
@@ -33,10 +36,18 @@ const questionsData = require("./questions.json");
 const settingCategoriesArr = questionsData.settingsCategories;
 
 function EditQuestions(props) {
-  console.log("EditQuestions", props.newQuestion);
+  console.log("EditQuestions", props);
   const navigation = useNavigation();
   const allQuestions = props.questionsArray;
-  props.newQuestion ? allQuestions.push(props.newQuestion) : null;
+  // props.newQuestion ? allQuestions.push(props.newQuestion) : null;
+
+  const dispatch = useDispatch();
+
+  const questions = useSelector(state => state.questionReducer.questionsList);
+  //Adjust this one!!
+  questions.length ? allQuestions.push(questions[0]) : null; 
+
+  console.log('allQuestions', allQuestions)
   return (
     <View>
       {allQuestions.map((item, index) => {
@@ -82,8 +93,10 @@ function EditQuestions(props) {
             navigation.dispatch(
               CommonActions.navigate({
                 name: "Add a Question",
-                params: { testAddQuestion: "1234",
-                answerTypeArray: props.answerTypeArray }
+                params: {
+                  testAddQuestion: "1234",
+                  answerTypeArray: props.answerTypeArray
+                }
               })
             )
           }
@@ -233,15 +246,17 @@ function SettingScreen({ route }) {
   console.log("SettingScreen !!!!!!!!: ", route.params);
   const questionsArray = route.params.questionsArray;
   const answerTypeArray = route.params.answerTypeArray;
-  const newQuestion = route.params.newQuestion;
+  // const newQuestion = route.params.newQuestion;
   if (route.name === "Contact us") {
     return <ContactUs />;
   } else if (route.name === "Edit questions") {
-    return <EditQuestions 
-    questionsArray={questionsArray} 
-    answerTypeArray={answerTypeArray}
-    newQuestion={newQuestion}
-    />;
+    return (
+      <EditQuestions
+        questionsArray={questionsArray}
+        answerTypeArray={answerTypeArray}
+        // newQuestion={newQuestion}
+      />
+    );
   } else if (route.name === "Calendar preferences") {
     return <CalendarPreferences />;
   } else if (route.name === "Delete data") {
@@ -261,7 +276,8 @@ function SettingsStackScreen(props) {
     console.log("isNotVisible", isNotVisible);
   };
 
-  console.log("SettingsStackScree*****: ", props.questionsArray);
+
+  console.log("SettingsStackScree*****: ");
   return (
     <SettingsStack.Navigator>
       <SettingsStack.Screen name="Settings" component={Settings} />
@@ -275,10 +291,10 @@ function SettingsStackScreen(props) {
             key={index}
             component={SettingScreen}
             // https://stackoverflow.com/a/60700220
-            initialParams={{ 
+            initialParams={{
               questionsArray: questionsArray,
               answerTypeArray: answerTypeArray
-             }}
+            }}
           />
         );
       })}
@@ -330,7 +346,10 @@ function SettingsStackScreen(props) {
           </SettingsStack.Screen>
         );
       })}
-      <SettingsStack.Screen name={"Add a Question"} component={AddQuestionScreen} />
+      <SettingsStack.Screen
+        name={"Add a Question"}
+        component={AddQuestionScreen}
+      />
     </SettingsStack.Navigator>
   );
 }
@@ -409,5 +428,21 @@ const styles = StyleSheet.create({
     // backgroundColor: "white"
   }
 });
+
+const mapStateToProps = state => {
+  console.log('mapStateToProps', state);
+  return {
+    questions: state.questionReducer.questionsList
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  console.log('mapDispatchToProps', state);
+  return {
+    delete: (id) => dispatch(deleteQuestion(id))
+  };
+};
+
+// export default connect(mapStateToProps, mapDispatchToProps)(SettingsStackScreen);
 
 export default SettingsStackScreen;
