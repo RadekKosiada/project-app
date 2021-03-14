@@ -7,7 +7,7 @@ function AddTagScreen({route}) {
   const questionNumber = route.params.questionNumber;
   const allQuestionsSum = route.params.allQuestionsSum;
   return (
-    <View style={{ flex: 1, alignItems: "left", justifyContent: "flex-start" }}>
+    <View>
       <Text>{questionNumber} / {allQuestionsSum}</Text>
       <Text>{question}</Text>
       <TextInput

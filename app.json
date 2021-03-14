@@ -7,9 +7,12 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-   
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "project.k.t.r.io"
+    },
+    "android": {
+      "package": "project.io"
     }
   }
 }

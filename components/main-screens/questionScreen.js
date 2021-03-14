@@ -16,12 +16,21 @@ function QuestionScreen({ route, navigation }) {
 
   return (
     // main View
-    <View>
+    <View style={{ flex: 1,
+     // on x ('primary) axis
+      // justifyContent: "flex-start",
+      // // on y (cross) axis
+      //  alignItems: "stretch", 
+     }}>
         <GoToButton 
           screenName="Home" 
           data={{ iconName: "close", position: "flex-end" }} 
         />
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <View style={{ 
+        flex: 1, 
+        alignItems: "center", 
+        // justifyContent: "flex-start" 
+        }}>
         <Text>
           {route.params.key + 1} / {route.params.allQuestionsSum}{" "}
         </Text>

@@ -11,7 +11,8 @@ import {
   View,
   TextInput,
   Image,
-  Button
+  Button, 
+  Dimensions
 } from "react-native";
 // https://reactnativeelements.com/docs/button
 // import { Icon } from 'react-native-elements'
@@ -23,14 +24,6 @@ import AddTagScreen from "./addTagScreen";
 // Data
 const questionsData = require("./questions.json");
 const questionsArray = questionsData.questions;
-
-
-// TODO adjust the Input screen? and pass possible answers as autocomplete, but only if Loop is pressed; 
-// divide into simple files;
-// check if I  an use Open Answer Component as screen but so it looks like question screen
-
-// arrows to move between questions? either arros or swipe!
-// close button to all question components
 
 // Root
 const HomeStack = createStackNavigator();
@@ -59,13 +52,15 @@ function HomeStackScreen() {
 const Home = ({ navigation }) => {
   const tagsArray = questionsData.tags;
   const singleAnswerArray = questionsData["single choice answers"];
+  const questionWidth = Dimensions.get("window").width * 9/10;
+  
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center"}}>
       {questionsArray.map((item, index) => {
         let question = item.question;
         console.log(item);
         return (
-          <TouchableOpacity key={index}>
+          <TouchableOpacity style={{flex: 1, width: questionWidth, marginLeft: 0, marginRight: 0 }} key={index}>
             <Text
               style={styles.questions}
               key={index}
@@ -98,15 +93,16 @@ const Home = ({ navigation }) => {
 const styles = StyleSheet.create({
   questions: {
     backgroundColor: "lightgray",
-    margin: 8,
-    borderColor: "white",
+    marginTop: 20,
+    marginBottom: 20,
+    // borderColor: "white",
     //borderWidth: 1,
-    borderRadius: 25,
+    borderRadius: 10,
     // color: "white",
-    width: "100%",
-    // fontSize: 24,
+    // width: "100%",
+    fontSize:18,
     // fontWeight: 'bold',
-    overflow: "hidden",
+    // overflow: "hidden",
     padding: 12,
     textAlign: "left"
   },
