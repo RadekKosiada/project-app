@@ -27,3 +27,12 @@ swipe between screens
 users => data: name etc., week starts on
 
 FIX picker probably from https://github.com/react-native-picker/picker
+
+Move Save Button to a seperate component
+Tidy up 'Settings' and divide into a seperate files;
+Create folders for different screens for easier orientation?
+
+read about redux (for react native)
+
+Fix adding ID!! so the new questions are not added again and again
+Add deleting question!!!
