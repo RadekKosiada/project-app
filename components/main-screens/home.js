@@ -3,6 +3,7 @@ import { NavigationContainer, CommonActions, useNavigation } from "@react-naviga
 import { createStackNavigator } from "@react-navigation/stack";
 import { StatusBar } from "expo-status-bar";
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import {
   TouchableOpacity,
   StyleSheet,
@@ -23,13 +24,13 @@ import AddTagScreen from "./addTagScreen";
 
 // Data
 const questionsData = require("./questions.json");
-const questionsArray = questionsData.questions;
+// const questionsArray = questionsData.questions;
 
 // Root
 const HomeStack = createStackNavigator();
 
 function HomeStackScreen() {
- 
+  const questionsArray = useSelector(state => state.questionReducer.questionsList);
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen name="Home" component={Home} />
@@ -53,7 +54,7 @@ const Home = ({ navigation }) => {
   const tagsArray = questionsData.tags;
   const singleAnswerArray = questionsData["single choice answers"];
   const questionWidth = Dimensions.get("window").width * 9/10;
-  
+  const questionsArray = useSelector(state => state.questionReducer.questionsList);
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center"}}>
       {questionsArray.map((item, index) => {
