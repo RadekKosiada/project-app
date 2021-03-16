@@ -14,7 +14,7 @@ const questionReducer = (state = initialState, action) => {
         // concat as it returns a new array,
         // whereras push add to the current array
         questionsList: state.questionsList.concat({
-          id: 99,
+          id: Math.round(Math.random() * 100000),
           'possible answer': 'scale',
           question: action.data,
           visible: true
@@ -22,10 +22,11 @@ const questionReducer = (state = initialState, action) => {
       };
       
     case DELETE_QUESTION:
+      console.log('DELETING', action.id);
       return {
         ...state,
-        foodList: state.foodList.filter((item) => 
-          item.id !== id)
+        questionsList: state.questionsList.filter((item) => 
+          item.id !== action.id)
       };
     default:
       return state;
