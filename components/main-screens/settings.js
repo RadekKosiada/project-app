@@ -39,14 +39,8 @@ function EditQuestions(props) {
   console.log("EditQuestions", props);
   const navigation = useNavigation();
   // const allQuestions = props.questionsArray;
-  // props.newQuestion ? allQuestions.push(props.newQuestion) : null;
-
-  // const dispatch = useDispatch();
 
   const questionsArray = useSelector(state => state.questionReducer.questionsList);
-  // const questions = useSelector(state => state.questionReducer.questionsList);
-  // //Adjust this one!!
-  // questions.length ? allQuestions.push(questions[0]) : null; 
 
   console.log('allQuestions o0o0o0o0o', questionsArray);
   return (
@@ -278,9 +272,7 @@ function SettingsStackScreen(props) {
   };
   
   const questionsArray = useSelector(state => state.questionReducer.questionsList);
-  //Adjust this one!!
-  // questions.length ? questionsArray.push(questions[0]) : null; 
-  
+ 
   console.log("SettingsStackScree*****: ", questionsArray);
   return (
     <SettingsStack.Navigator>
