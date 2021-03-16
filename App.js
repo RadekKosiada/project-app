@@ -95,7 +95,7 @@ export default function App() {
               {props => (
                 <SettingsStackScreen
                   {...props}
-                  questionsArray={questionsArray}
+                  // questionsArray={questionsArray}
                   answerTypeArray={answerTypeArray}
                 />
               )}

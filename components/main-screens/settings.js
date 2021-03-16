@@ -38,19 +38,20 @@ const settingCategoriesArr = questionsData.settingsCategories;
 function EditQuestions(props) {
   console.log("EditQuestions", props);
   const navigation = useNavigation();
-  const allQuestions = props.questionsArray;
+  // const allQuestions = props.questionsArray;
   // props.newQuestion ? allQuestions.push(props.newQuestion) : null;
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const questions = useSelector(state => state.questionReducer.questionsList);
-  //Adjust this one!!
-  questions.length ? allQuestions.push(questions[0]) : null; 
+  const questionsArray = useSelector(state => state.questionReducer.questionsList);
+  // const questions = useSelector(state => state.questionReducer.questionsList);
+  // //Adjust this one!!
+  // questions.length ? allQuestions.push(questions[0]) : null; 
 
-  console.log('allQuestions', allQuestions)
+  console.log('allQuestions o0o0o0o0o', questionsArray);
   return (
     <View>
-      {allQuestions.map((item, index) => {
+      {questionsArray.map((item, index) => {
         return (
           <View
             key={index}
@@ -268,16 +269,19 @@ function SettingScreen({ route }) {
 const SettingsStack = createStackNavigator();
 
 function SettingsStackScreen(props) {
-  const questionsArray = props.questionsArray;
+  // const questionsArray = props.questionsArray;
   const answerTypeArray = props.answerTypeArray;
   const [isNotVisible, setVisible] = useState(true);
   const handleToggle = () => {
     setVisible(!isNotVisible);
     console.log("isNotVisible", isNotVisible);
   };
-
-
-  console.log("SettingsStackScree*****: ");
+  
+  const questionsArray = useSelector(state => state.questionReducer.questionsList);
+  //Adjust this one!!
+  // questions.length ? questionsArray.push(questions[0]) : null; 
+  
+  console.log("SettingsStackScree*****: ", questionsArray);
   return (
     <SettingsStack.Navigator>
       <SettingsStack.Screen name="Settings" component={Settings} />
