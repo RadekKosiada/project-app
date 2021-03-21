@@ -279,7 +279,7 @@ function SettingsStackScreen(props) {
   const questionsArray = useSelector(state => state.questionReducer.questionsList);
    // something is wrong with this dispatch!!!
   const dispatch = useDispatch();
-  const deleteQuestion = (id) => dispatch(deleteQuestion(id));
+  const deleteCurrent = (id) => dispatch(deleteQuestion(id));
  
   console.log("SettingsStackScree*****: ", questionsArray);
   return (
@@ -336,13 +336,13 @@ function SettingsStackScreen(props) {
                     color="white"
                     reverseColor="black"
                     onPress={() => {
-                      console.log("Trash was pressed", item.id);
+                      console.log("Deleting question w/id", item.id);
                       navigation.dispatch(
                         CommonActions.navigate({
                           name: "Edit questions",
                         })
                       );
-                      deleteQuestion(item.id);
+                      deleteCurrent(item.id);
                     }
                   }
                   />
