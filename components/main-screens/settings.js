@@ -63,13 +63,15 @@ function EditQuestions(props) {
               <Icon
                 name="edit-2"
                 type="feather"
-                onPress={() =>
+                onPress={() =>{
+                  console.log('Feather clicked', item.id)
                   navigation.dispatch(
                     CommonActions.navigate({
                       name: item.question,
                       params: { question: item.question }
                     })
                   )
+                }
                 }
               />
             </ListItem>
@@ -263,6 +265,7 @@ function SettingScreen({ route }) {
 const SettingsStack = createStackNavigator();
 
 function SettingsStackScreen(props) {
+  const navigation = useNavigation();
   // const questionsArray = props.questionsArray;
   const answerTypeArray = props.answerTypeArray;
   const [isNotVisible, setVisible] = useState(true);
@@ -272,6 +275,9 @@ function SettingsStackScreen(props) {
   };
   
   const questionsArray = useSelector(state => state.questionReducer.questionsList);
+
+  const dispatch = useDispatch();
+  const deleteQuestion = (id) => dispatch(deleteQuestion(id));
  
   console.log("SettingsStackScree*****: ", questionsArray);
   return (
@@ -300,6 +306,12 @@ function SettingsStackScreen(props) {
         let question = item.question;
         let questionVisible = item.visible;
         let isNotVisible = !questionVisible;
+        
+        const dispatch = useDispatch();
+        // something is wrong with this dispatch!!!
+        // const deleteQuestion = (id) => dispatch(deleteQuestion(id));
+
+        const deleteQuestion = (id) => console.log(id);
         return (
           <SettingsStack.Screen
             name={question}
@@ -325,7 +337,16 @@ function SettingsStackScreen(props) {
                     type="feather"
                     color="white"
                     reverseColor="black"
-                    onPress={() => console.log("Trash was pressed")}
+                    onPress={() => {
+                      console.log("Trash was pressed", item.id);
+                      navigation.dispatch(
+                        CommonActions.navigate({
+                          name: "Edit questions",
+                        })
+                      );
+                      deleteQuestion(item.id);
+                    }
+                  }
                   />
                 </View>
               )
@@ -425,19 +446,19 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = state => {
-  console.log('mapStateToProps', state);
-  return {
-    questions: state.questionReducer.questionsList
-  };
-};
+// const mapStateToProps = state => {
+//   console.log('mapStateToProps', state);
+//   return {
+//     questions: state.questionReducer.questionsList
+//   };
+// };
 
-const mapDispatchToProps = dispatch => {
-  console.log('mapDispatchToProps', state);
-  return {
-    delete: (id) => dispatch(deleteQuestion(id))
-  };
-};
+// const mapDispatchToProps = dispatch => {
+//   console.log('mapDispatchToProps', state);
+//   return {
+//     delete: (id) => dispatch(deleteQuestion(id))
+//   };
+// };
 
 // export default connect(mapStateToProps, mapDispatchToProps)(SettingsStackScreen);
 
