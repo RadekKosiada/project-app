@@ -244,6 +244,8 @@ function SettingScreen({ route }) {
   const questionsArray = route.params.questionsArray;
   const answerTypeArray = route.params.answerTypeArray;
   // const newQuestion = route.params.newQuestion;
+  // questionsArray.push(newQuestion);
+
   if (route.name === "Contact us") {
     return <ContactUs />;
   } else if (route.name === "Edit questions") {
@@ -275,7 +277,7 @@ function SettingsStackScreen(props) {
   };
   
   const questionsArray = useSelector(state => state.questionReducer.questionsList);
-
+   // something is wrong with this dispatch!!!
   const dispatch = useDispatch();
   const deleteQuestion = (id) => dispatch(deleteQuestion(id));
  
@@ -295,7 +297,8 @@ function SettingsStackScreen(props) {
             // https://stackoverflow.com/a/60700220
             initialParams={{
               questionsArray: questionsArray,
-              answerTypeArray: answerTypeArray
+              answerTypeArray: answerTypeArray,
+              // questionsArray: questionsArray
             }}
           />
         );
@@ -306,12 +309,7 @@ function SettingsStackScreen(props) {
         let question = item.question;
         let questionVisible = item.visible;
         let isNotVisible = !questionVisible;
-        
-        const dispatch = useDispatch();
-        // something is wrong with this dispatch!!!
-        // const deleteQuestion = (id) => dispatch(deleteQuestion(id));
 
-        const deleteQuestion = (id) => console.log(id);
         return (
           <SettingsStack.Screen
             name={question}
